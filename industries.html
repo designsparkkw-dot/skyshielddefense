@@ -40,18 +40,8 @@
     }
     .industry-detail-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.3rem; }
     .industry-detail-sub { font-size: 0.8rem; color: var(--gray); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-    .industry-detail-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .industry-detail-desc { font-size: 0.92rem; color: var(--gray-light); line-height: 1.85; }
-    .industry-services { display: flex; flex-direction: column; gap: 0.6rem; }
-    .industry-service-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 0.8rem; font-weight: 600;
-      width: fit-content;
-    }
     @media (max-width: 768px) {
-      .industry-detail-body { grid-template-columns: 1fr; }
       .industry-detail { padding: 2rem; }
     }
   </style>
@@ -143,20 +133,40 @@
           <div class="industry-detail-sub">Counter-drone airspace protection · Surface coatings · Security governance</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">Airports face a dual protection challenge: maintaining the structural integrity of vast infrastructure assets while securing airspace from the growing threat of unauthorised drone incursions.</p>
-          <p style="margin-bottom:1rem;">A single drone incident can ground an entire airport — costing millions per hour in lost revenue, triggering safety inquiries and damaging reputations. Sky Shield Detect's AEROSENTRY and AERODOME systems provide comprehensive detection-to-defeat coverage across all runway approaches and terminal airspace.</p>
-          <p>Our Sky Shield Protect coatings maintain runway surfaces, terminal floors, jet bridges and infrastructure against the extreme wear of aviation operations — extending asset life and reducing costly maintenance downtime.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">Airports face a dual protection challenge: maintaining the structural integrity of vast infrastructure assets while securing airspace from the growing threat of unauthorised drone incursions.</p>
+        <p style="margin-bottom:1rem;">A single drone incident can ground an entire airport — costing millions per hour in lost revenue, triggering safety inquiries and damaging reputations. Sky Shield Detect's AEROSENTRY and AERODOME systems provide comprehensive detection-to-defeat coverage across all runway approaches and terminal airspace.</p>
+        <p>Our Sky Shield Protect coatings maintain runway surfaces, terminal floors, jet bridges and infrastructure against the extreme wear of aviation operations — extending asset life and reducing costly maintenance downtime.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Polyurea Runway &amp; Floor Coatings</h3>
+          <p class="product-desc">Sky Shield Protect surface systems for runways, terminal floors and jet bridges.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Polyurea runway &amp; floor coatings</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> AEROSENTRY drone detection</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> AERODOME RF defeat system</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> AEROTRACKER airspace management</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Security governance &amp; protocols</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Aviation Assessment</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">AEROSENTRY Drone Detection</h3>
+          <p class="product-desc">Multi-sensor fixed perimeter detection covering all runway approaches and terminal airspace.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3 class="product-name">AERODOME RF Defeat System</h3>
+          <p class="product-desc">Instant RF neutralisation of unauthorised drones in airport airspace.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+          <h3 class="product-name">AEROTRACKER Airspace Management</h3>
+          <p class="product-desc">Unified airspace management integrating with ATM systems for real-time situational awareness.</p>
+        </div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">Security Governance &amp; Protocols</h3>
+          <p class="product-desc">Integrated security governance frameworks for airport operations and emergency response.</p>
+        </div>
+        <div class="product-card fade-up delay-2" style="display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Aviation Assessment</a>
         </div>
       </div>
     </div>
@@ -170,19 +180,35 @@
           <div class="industry-detail-sub">Corrosion protection · Infrastructure coatings · Perimeter security</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">Power stations, water treatment facilities, electrical substations and renewable energy installations represent the backbone of modern society — and among its most targeted assets. Failure means catastrophe.</p>
-          <p style="margin-bottom:1rem;">Sky Shield Protect's chemical-resistant polyurea systems are the industry standard for protecting steel structures, containment vessels, cooling towers and electrical infrastructure against corrosion and chemical attack.</p>
-          <p>Our drone detection systems protect critical energy infrastructure from aerial surveillance, sabotage and weaponised UAV threats — with perimeter coverage deployable in any terrain or weather condition.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">Power stations, water treatment facilities, electrical substations and renewable energy installations represent the backbone of modern society — and among its most targeted assets. Failure means catastrophe.</p>
+        <p style="margin-bottom:1rem;">Sky Shield Protect's chemical-resistant polyurea systems are the industry standard for protecting steel structures, containment vessels, cooling towers and electrical infrastructure against corrosion and chemical attack.</p>
+        <p>Our drone detection systems protect critical energy infrastructure from aerial surveillance, sabotage and weaponised UAV threats — with perimeter coverage deployable in any terrain or weather condition.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Chemical-Resistant Polyurea Coatings</h3>
+          <p class="product-desc">Industry-standard protection for steel structures, containment vessels and cooling towers.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Chemical-resistant polyurea coatings</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41"/><path d="M4.93 4.93l1.41 1.41"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 19.07l1.41-1.41"/><path d="M19.07 19.07l-1.41-1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg> Structural anti-corrosion systems</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> Perimeter drone detection</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Integrated security governance</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Energy Assessment</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41"/><path d="M4.93 4.93l1.41 1.41"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 19.07l1.41-1.41"/><path d="M19.07 19.07l-1.41-1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg></div>
+          <h3 class="product-name">Structural Anti-Corrosion Systems</h3>
+          <p class="product-desc">Long-term corrosion prevention for electrical infrastructure and substations.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">Perimeter Drone Detection</h3>
+          <p class="product-desc">Aerial threat protection deployable in any terrain or weather condition.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">Integrated Security Governance</h3>
+          <p class="product-desc">Unified physical and digital security framework for energy facility management.</p>
+        </div>
+        <div class="product-card fade-up delay-1" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Energy Assessment</a>
         </div>
       </div>
     </div>
@@ -196,19 +222,35 @@
           <div class="industry-detail-sub">Ballistic coatings · Airspace defence · Security governance</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">Sovereign assets, military installations, government buildings and personnel require the most uncompromising level of protection available. Sky Shield Defence is trusted by governments and defence agencies across multiple continents.</p>
-          <p style="margin-bottom:1rem;">Our ballistic polyurea coatings are applied to military vehicles, blast walls, bunkers and hardened structures — containing fragmentation and spalling from IED detonations and providing significant force protection enhancement.</p>
-          <p>Counter-drone and airspace management systems protect military airbases, government campuses and sensitive installations from the growing threat of weaponised UAVs and aerial surveillance.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">Sovereign assets, military installations, government buildings and personnel require the most uncompromising level of protection available. Sky Shield Defence is trusted by governments and defence agencies across multiple continents.</p>
+        <p style="margin-bottom:1rem;">Our ballistic polyurea coatings are applied to military vehicles, blast walls, bunkers and hardened structures — containing fragmentation and spalling from IED detonations and providing significant force protection enhancement.</p>
+        <p>Counter-drone and airspace management systems protect military airbases, government campuses and sensitive installations from the growing threat of weaponised UAVs and aerial surveillance.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Ballistic Polyurea Blast Protection</h3>
+          <p class="product-desc">Applied to blast walls, bunkers and hardened structures to contain IED fragmentation and spalling.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Ballistic polyurea blast protection</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Military vehicle coating systems</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> Military-grade counter-UAV</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Classified security governance</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Government Assessment</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <h3 class="product-name">Military Vehicle Coating Systems</h3>
+          <p class="product-desc">Force protection coatings for military vehicles providing blast and fragmentation resistance.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">Military-Grade Counter-UAV</h3>
+          <p class="product-desc">Advanced counter-drone systems protecting military airbases from weaponised UAV threats.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">Classified Security Governance</h3>
+          <p class="product-desc">Comprehensive governance frameworks for sensitive government and defence installations.</p>
+        </div>
+        <div class="product-card fade-up delay-1" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Government Assessment</a>
         </div>
       </div>
     </div>
@@ -222,19 +264,35 @@
           <div class="industry-detail-sub">Marine coatings · Drone detection at sea · VIP protection</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">The maritime environment presents unique protection challenges: saltwater corrosion, UV degradation, mechanical impact, and the growing threat of drone surveillance of vessels and their passengers.</p>
-          <p style="margin-bottom:1rem;">Sky Shield Protect's marine coating systems provide long-term protection for vessel hulls, decks, superstructures and port infrastructure — engineered to withstand continuous immersion, saltwater exposure and the mechanical stresses of operation.</p>
-          <p>AEROSENTRY MARINE delivers counter-drone protection at sea — detecting and defeating UAV threats to superyachts, commercial vessels and port facilities in all weather conditions.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">The maritime environment presents unique protection challenges: saltwater corrosion, UV degradation, mechanical impact, and the growing threat of drone surveillance of vessels and their passengers.</p>
+        <p style="margin-bottom:1rem;">Sky Shield Protect's marine coating systems provide long-term protection for vessel hulls, decks, superstructures and port infrastructure — engineered to withstand continuous immersion, saltwater exposure and the mechanical stresses of operation.</p>
+        <p>AEROSENTRY MARINE delivers counter-drone protection at sea — detecting and defeating UAV threats to superyachts, commercial vessels and port facilities in all weather conditions.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Marine Anti-Corrosion Coatings</h3>
+          <p class="product-desc">Long-term protection against saltwater corrosion, UV degradation and mechanical impact.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Marine anti-corrosion coatings</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M5 19a7 7 0 0 0 14 0"/></svg> Hull &amp; deck protection systems</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> AEROSENTRY MARINE</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> VIP maritime security governance</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Maritime Assessment</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M5 19a7 7 0 0 0 14 0"/></svg></div>
+          <h3 class="product-name">Hull &amp; Deck Protection Systems</h3>
+          <p class="product-desc">Engineered for continuous immersion and the mechanical stresses of maritime operation.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">AEROSENTRY MARINE</h3>
+          <p class="product-desc">Counter-drone protection at sea — detecting and defeating UAV threats in all weather conditions.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">VIP Maritime Security Governance</h3>
+          <p class="product-desc">Discreet integrated security frameworks for superyacht owners and HNW maritime clients.</p>
+        </div>
+        <div class="product-card fade-up delay-1" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Maritime Assessment</a>
         </div>
       </div>
     </div>
@@ -248,19 +306,35 @@
           <div class="industry-detail-sub">Event drone detection · Crowd security · Infrastructure coatings</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">Mass public gatherings represent one of the highest-consequence environments for drone threats — with the potential for surveillance, broadcast interference, payload delivery and direct physical harm to crowds of tens of thousands.</p>
-          <p style="margin-bottom:1rem;">Sky Shield Detect provides rapid-deployment counter-drone coverage for stadiums, concert venues, outdoor festivals and major public events — with systems operational within hours of arrival on site.</p>
-          <p>Our Protect coatings also maintain the structural integrity and public safety of stadium floors, concourses and infrastructure — meeting the demanding requirements of high-footfall public venues.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">Mass public gatherings represent one of the highest-consequence environments for drone threats — with the potential for surveillance, broadcast interference, payload delivery and direct physical harm to crowds of tens of thousands.</p>
+        <p style="margin-bottom:1rem;">Sky Shield Detect provides rapid-deployment counter-drone coverage for stadiums, concert venues, outdoor festivals and major public events — with systems operational within hours of arrival on site.</p>
+        <p>Our Protect coatings also maintain the structural integrity and public safety of stadium floors, concourses and infrastructure — meeting the demanding requirements of high-footfall public venues.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">AEROSENTRY PATROL (Rapid Deploy)</h3>
+          <p class="product-desc">Mobile counter-drone system operational within hours of arrival on site for events.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> AEROSENTRY PATROL (rapid deploy)</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Event airspace defeat systems</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Venue floor &amp; concourse coatings</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Event security governance</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Stadium Assessment</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3 class="product-name">Event Airspace Defeat Systems</h3>
+          <p class="product-desc">RF defeat systems protecting event airspace from surveillance and weaponised UAVs.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Venue Floor &amp; Concourse Coatings</h3>
+          <p class="product-desc">High-durability surface systems meeting the demands of high-footfall public venues.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">Event Security Governance</h3>
+          <p class="product-desc">Integrated security protocols and response frameworks for mass gathering events.</p>
+        </div>
+        <div class="product-card fade-up delay-1" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Stadium Assessment</a>
         </div>
       </div>
     </div>
@@ -274,19 +348,35 @@
           <div class="industry-detail-sub">Pipeline coatings · Offshore protection · Perimeter drone security</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">The oil and gas sector faces some of the most extreme environmental and security challenges of any industry — from offshore corrosion and chemical exposure to onshore perimeter threats and increasingly sophisticated drone-based attacks.</p>
-          <p style="margin-bottom:1rem;">Sky Shield Protect's polyurea systems are the material of choice for pipeline protection, tank lining, offshore platform coatings and secondary containment — offering unmatched chemical resistance and longevity in hydrocarbon environments.</p>
-          <p>Perimeter drone detection systems protect refineries, LNG facilities and pipeline infrastructure from aerial surveillance and sabotage — integrated with existing security management systems.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">The oil and gas sector faces some of the most extreme environmental and security challenges of any industry — from offshore corrosion and chemical exposure to onshore perimeter threats and increasingly sophisticated drone-based attacks.</p>
+        <p style="margin-bottom:1rem;">Sky Shield Protect's polyurea systems are the material of choice for pipeline protection, tank lining, offshore platform coatings and secondary containment — offering unmatched chemical resistance and longevity in hydrocarbon environments.</p>
+        <p>Perimeter drone detection systems protect refineries, LNG facilities and pipeline infrastructure from aerial surveillance and sabotage — integrated with existing security management systems.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Pipeline &amp; Tank Lining Systems</h3>
+          <p class="product-desc">Unmatched chemical resistance and longevity for hydrocarbon containment and pipeline protection.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Pipeline &amp; tank lining systems</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M5 19a7 7 0 0 0 14 0"/></svg> Offshore platform coatings</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> Refinery perimeter drone detection</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Critical asset security governance</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Oil &amp; Gas Assessment</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="16"/><path d="M5 19a7 7 0 0 0 14 0"/></svg></div>
+          <h3 class="product-name">Offshore Platform Coatings</h3>
+          <p class="product-desc">Long-life protective systems for offshore structures in extreme marine environments.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">Refinery Perimeter Drone Detection</h3>
+          <p class="product-desc">Protecting refineries and LNG facilities from aerial surveillance and drone-based sabotage.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">Critical Asset Security Governance</h3>
+          <p class="product-desc">Integrated security management systems for high-value energy infrastructure.</p>
+        </div>
+        <div class="product-card fade-up delay-1" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Oil &amp; Gas Assessment</a>
         </div>
       </div>
     </div>
@@ -300,19 +390,35 @@
           <div class="industry-detail-sub">Security-first design · Estate governance · Drone protection · Discreet VIP security</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">For high-net-worth individuals, their families and their properties — conventional security is a visible, intrusive compromise that violates the privacy and aesthetic integrity of the environments it is supposed to protect.</p>
-          <p style="margin-bottom:1rem;">Sky Shield Secure is designed specifically for clients who demand absolute protection delivered with absolute discretion. Our security-first architectural approach ensures your estate is defensible from the ground up — not as an afterthought.</p>
-          <p>Drone detection protects your airspace and privacy from surveillance UAVs, while our integrated governance framework ensures every team member, system and protocol works as a seamless, invisible shield around you and your family.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">For high-net-worth individuals, their families and their properties — conventional security is a visible, intrusive compromise that violates the privacy and aesthetic integrity of the environments it is supposed to protect.</p>
+        <p style="margin-bottom:1rem;">Sky Shield Secure is designed specifically for clients who demand absolute protection delivered with absolute discretion. Our security-first architectural approach ensures your estate is defensible from the ground up — not as an afterthought.</p>
+        <p>Drone detection protects your airspace and privacy from surveillance UAVs, while our integrated governance framework ensures every team member, system and protocol works as a seamless, invisible shield around you and your family.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">Security-First Design Consultation</h3>
+          <p class="product-desc">Defensibility designed into the fabric of your estate from day one of architectural planning.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Security-first design consultation</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Single point of contact management</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> Discreet drone airspace protection</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Estate surface coatings</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-gold" style="font-size:0.82rem;padding:12px 24px;">Confidential Enquiry</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <h3 class="product-name">Single Point of Contact Management</h3>
+          <p class="product-desc">One expert coordinating all physical, digital and personnel security for your estate.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">Discreet Drone Airspace Protection</h3>
+          <p class="product-desc">Invisible UAV surveillance detection protecting your privacy and personal security.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Estate Surface Coatings</h3>
+          <p class="product-desc">High-quality protective coatings maintaining the aesthetic integrity of luxury properties.</p>
+        </div>
+        <div class="product-card fade-up delay-1" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-gold" style="font-size:0.82rem;padding:12px 24px;">Confidential Enquiry</a>
         </div>
       </div>
     </div>
@@ -326,19 +432,35 @@
           <div class="industry-detail-sub">Corporate security governance · Data centre protection · Executive security</div>
         </div>
       </div>
-      <div class="industry-detail-body">
-        <div class="industry-detail-desc">
-          <p style="margin-bottom:1rem;">Global corporations, financial institutions and data centres face an increasingly sophisticated threat landscape — from physical perimeter breaches and drone-based corporate espionage to the catastrophic consequences of infrastructure failure.</p>
-          <p style="margin-bottom:1rem;">Sky Shield Secure's integrated governance approach unifies physical and digital security across corporate campuses — eliminating the dangerous silos between IT security, physical security and personnel management.</p>
-          <p>Counter-drone systems protect R&D facilities, trading floors and executive campuses from aerial surveillance, while our Protect coatings maintain the structural integrity of critical facilities and specialist flooring environments.</p>
+      <div class="industry-detail-desc" style="margin-bottom:2rem;">
+        <p style="margin-bottom:1rem;">Global corporations, financial institutions and data centres face an increasingly sophisticated threat landscape — from physical perimeter breaches and drone-based corporate espionage to the catastrophic consequences of infrastructure failure.</p>
+        <p style="margin-bottom:1rem;">Sky Shield Secure's integrated governance approach unifies physical and digital security across corporate campuses — eliminating the dangerous silos between IT security, physical security and personnel management.</p>
+        <p>Counter-drone systems protect R&amp;D facilities, trading floors and executive campuses from aerial surveillance, while our Protect coatings maintain the structural integrity of critical facilities and specialist flooring environments.</p>
+      </div>
+      <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Solutions Deployed</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;">
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 class="product-name">Corporate Security Governance</h3>
+          <p class="product-desc">Unified physical and digital security eliminating dangerous silos across corporate campuses.</p>
         </div>
-        <div class="industry-services">
-          <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:0.5rem;">Solutions Deployed</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Corporate security governance</div>
-          <div class="industry-service-tag" style="background:rgba(200,168,75,0.12);border:1px solid rgba(200,168,75,0.3);color:var(--gold);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg> Campus drone detection</div>
-          <div class="industry-service-tag" style="background:rgba(30,91,168,0.15);border:1px solid rgba(30,91,168,0.3);color:var(--blue-glow);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Data centre floor coatings</div>
-          <div class="industry-service-tag" style="background:rgba(45,125,210,0.12);border:1px solid rgba(45,125,210,0.3);color:var(--blue-bright);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Governance &amp; protocol development</div>
-          <div style="margin-top:1rem;"><a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Corporate Assessment</a></div>
+        <div class="product-card fade-up delay-1">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg></div>
+          <h3 class="product-name">Campus Drone Detection</h3>
+          <p class="product-desc">Protecting R&amp;D facilities, trading floors and executive campuses from aerial espionage.</p>
+        </div>
+        <div class="product-card fade-up delay-2">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2472cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="product-name">Data Centre Floor Coatings</h3>
+          <p class="product-desc">Specialist flooring protection maintaining structural integrity of critical IT facilities.</p>
+        </div>
+        <div class="product-card fade-up">
+          <div style="margin-bottom:0.8rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a8be" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h3 class="product-name">Governance &amp; Protocol Development</h3>
+          <p class="product-desc">Security frameworks and emergency response protocols for corporate operations.</p>
+        </div>
+        <div class="product-card fade-up delay-1" style="grid-column:span 2;display:flex;align-items:center;justify-content:center;">
+          <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:12px 24px;">Get Corporate Assessment</a>
         </div>
       </div>
     </div>
