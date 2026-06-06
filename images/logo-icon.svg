@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 540" width="500" height="540">
+  <defs>
+    <!-- Shield gradient: dark navy left → cobalt blue right -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#0a1628"/>
+      <stop offset="45%"  stop-color="#0f2244"/>
+      <stop offset="100%" stop-color="#1e5bb0"/>
+    </linearGradient>
+    <!-- Shield border gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#0d1f3c"/>
+      <stop offset="50%"  stop-color="#1a3a6b"/>
+      <stop offset="100%" stop-color="#2472cc"/>
+    </linearGradient>
+    <!-- Road right gradient: blue -->
+    <linearGradient id="roadBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#1e5bb0"/>
+      <stop offset="100%" stop-color="#2472cc"/>
+    </linearGradient>
+    <!-- Road left: asphalt dark -->
+    <linearGradient id="roadDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#1a1a22"/>
+      <stop offset="100%" stop-color="#0a0a0f"/>
+    </linearGradient>
+    <!-- Signal wave color -->
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#2472cc"/>
+      <stop offset="100%" stop-color="#4a9fd4"/>
+    </linearGradient>
+    <!-- Drop shadow filter -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <!-- Glow filter for drone -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Clip to shield shape -->
+    <clipPath id="shieldClip">
+      <path d="M250,12 L480,90 L480,280 Q480,420 250,520 Q20,420 20,280 L20,90 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── SHIELD BODY ── -->
+  <g filter="url(#shadow)">
+    <!-- Background fill -->
+    <path d="M250,12 L480,90 L480,280 Q480,420 250,520 Q20,420 20,280 L20,90 Z"
+          fill="url(#shieldGrad)"/>
+    <!-- Shield border (thick outline) -->
+    <path d="M250,12 L480,90 L480,280 Q480,420 250,520 Q20,420 20,280 L20,90 Z"
+          fill="none" stroke="url(#borderGrad)" stroke-width="14"
+          stroke-linejoin="round"/>
+    <!-- Inner border highlight (thinner, slightly offset inward) -->
+    <path d="M250,32 L462,104 L462,280 Q462,405 250,498 Q38,405 38,280 L38,104 Z"
+          fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2"/>
+  </g>
+
+  <!-- ── DIVIDER LINE (vertical, splits shield left/right visually) ── -->
+  <line x1="250" y1="20" x2="250" y2="300" stroke="rgba(255,255,255,0.08)" stroke-width="1" clip-path="url(#shieldClip)"/>
+
+  <!-- ── ROAD / PATH ── -->
+  <g clip-path="url(#shieldClip)">
+    <!-- Left road (dark asphalt) -->
+    <path d="M250,510 L60,510 L60,360 L250,305 Z" fill="url(#roadDark)"/>
+    <!-- Right road (cobalt blue) -->
+    <path d="M250,510 L440,510 L440,360 L250,305 Z" fill="url(#roadBlue)"/>
+    <!-- Centre road dividing white line -->
+    <path d="M250,510 L250,305" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-dasharray="14,10"/>
+    <!-- Road left edge white stripe -->
+    <path d="M250,510 L60,510 L60,360 L250,305" fill="none" stroke="white" stroke-width="2.5" stroke-opacity="0.7"/>
+    <!-- Road right edge white stripe -->
+    <path d="M250,510 L440,510 L440,360 L250,305" fill="none" stroke="white" stroke-width="2.5" stroke-opacity="0.7"/>
+  </g>
+
+  <!-- ── CITY SKYLINE SILHOUETTE ── -->
+  <g clip-path="url(#shieldClip)" fill="#060e1a">
+    <!-- Industrial tower far left -->
+    <rect x="58" y="220" width="8" height="80"/>
+    <rect x="54" y="230" width="16" height="4"/>
+    <rect x="52" y="238" width="20" height="4"/>
+    <!-- Refinery/industrial complex -->
+    <rect x="70" y="230" width="12" height="72"/>
+    <rect x="84" y="245" width="8" height="57"/>
+    <rect x="95" y="255" width="10" height="47"/>
+    <circle cx="80" cy="235" r="8"/>
+    <circle cx="95" cy="250" r="6"/>
+    <rect x="106" y="265" width="7" height="37"/>
+    <rect x="115" y="258" width="6" height="44"/>
+    <!-- Tanks / drums -->
+    <ellipse cx="125" cy="295" rx="10" ry="7"/>
+    <ellipse cx="140" cy="295" rx="10" ry="7"/>
+    <rect x="115" y="288" width="10" height="14"/>
+    <rect x="130" y="288" width="10" height="14"/>
+    <!-- City buildings centre -->
+    <rect x="155" y="240" width="18" height="62"/>
+    <rect x="175" y="252" width="22" height="50"/>
+    <rect x="199" y="235" width="20" height="67"/>
+    <rect x="221" y="248" width="16" height="54"/>
+    <rect x="239" y="242" width="12" height="60"/>
+    <!-- Dome / round building -->
+    <rect x="253" y="265" width="22" height="37"/>
+    <ellipse cx="264" cy="265" rx="11" ry="8"/>
+    <!-- More buildings right centre -->
+    <rect x="277" y="255" width="16" height="47"/>
+    <rect x="295" y="248" width="14" height="54"/>
+    <rect x="311" y="260" width="12" height="42"/>
+    <!-- Fence right side -->
+    <rect x="328" y="278" width="2" height="24"/> <rect x="335" y="278" width="2" height="24"/>
+    <rect x="342" y="278" width="2" height="24"/> <rect x="349" y="278" width="2" height="24"/>
+    <rect x="326" y="278" width="27" height="2"/>
+    <rect x="326" y="286" width="27" height="2"/>
+    <!-- CCTV camera -->
+    <rect x="356" y="262" width="3" height="14"/>
+    <rect x="356" y="258" width="18" height="8" rx="2"/>
+    <rect x="372" y="260" width="8" height="4" rx="1"/>
+    <!-- Control tower right -->
+    <rect x="388" y="215" width="12" height="85"/>
+    <rect x="382" y="215" width="24" height="12" rx="2"/>
+    <rect x="385" y="200" width="18" height="18" rx="3"/>
+    <rect x="383" y="196" width="22" height="6"/>
+  </g>
+
+  <!-- ── DRONE ── -->
+  <g filter="url(#glow)">
+    <!-- Drone body -->
+    <rect x="228" y="98" width="44" height="28" rx="6" fill="#0a1628"/>
+    <!-- Camera lens -->
+    <circle cx="250" cy="115" r="9" fill="#060e1a"/>
+    <circle cx="250" cy="115" r="5" fill="#0d2040"/>
+    <circle cx="248" cy="113" r="1.5" fill="rgba(255,255,255,0.3)"/>
+    <!-- Arms -->
+    <line x1="228" y1="102" x2="162" y2="82" stroke="#0a1628" stroke-width="7" stroke-linecap="round"/>
+    <line x1="272" y1="102" x2="338" y2="82" stroke="#0a1628" stroke-width="7" stroke-linecap="round"/>
+    <line x1="228" y1="120" x2="162" y2="130" stroke="#0a1628" stroke-width="7" stroke-linecap="round"/>
+    <line x1="272" y1="120" x2="338" y2="130" stroke="#0a1628" stroke-width="7" stroke-linecap="round"/>
+    <!-- Motor hubs -->
+    <circle cx="162" cy="82"  r="11" fill="#0c1c38"/>
+    <circle cx="338" cy="82"  r="11" fill="#0c1c38"/>
+    <circle cx="162" cy="130" r="11" fill="#0c1c38"/>
+    <circle cx="338" cy="130" r="11" fill="#0c1c38"/>
+    <!-- Propeller blades -->
+    <!-- Top-left motor -->
+    <ellipse cx="162" cy="82" rx="30" ry="5" fill="#0a1628" opacity="0.85" transform="rotate(-15,162,82)"/>
+    <ellipse cx="162" cy="82" rx="30" ry="5" fill="#0a1628" opacity="0.85" transform="rotate(75,162,82)"/>
+    <!-- Top-right motor -->
+    <ellipse cx="338" cy="82" rx="30" ry="5" fill="#0a1628" opacity="0.85" transform="rotate(15,338,82)"/>
+    <ellipse cx="338" cy="82" rx="30" ry="5" fill="#0a1628" opacity="0.85" transform="rotate(-75,338,82)"/>
+    <!-- Bottom-left motor -->
+    <ellipse cx="162" cy="130" rx="28" ry="4" fill="#0a1628" opacity="0.85" transform="rotate(-10,162,130)"/>
+    <ellipse cx="162" cy="130" rx="28" ry="4" fill="#0a1628" opacity="0.85" transform="rotate(80,162,130)"/>
+    <!-- Bottom-right motor -->
+    <ellipse cx="338" cy="130" rx="28" ry="4" fill="#0a1628" opacity="0.85" transform="rotate(10,338,130)"/>
+    <ellipse cx="338" cy="130" rx="28" ry="4" fill="#0a1628" opacity="0.85" transform="rotate(-80,338,130)"/>
+  </g>
+
+  <!-- ── SIGNAL / WIFI WAVES from camera ── -->
+  <g fill="none" stroke="url(#waveGrad)" stroke-linecap="round">
+    <path d="M228,148 Q250,155 272,148" stroke-width="3.5" opacity="0.9"/>
+    <path d="M214,162 Q250,172 286,162" stroke-width="3"   opacity="0.75"/>
+    <path d="M200,178 Q250,190 300,178" stroke-width="2.5" opacity="0.55"/>
+  </g>
+
+  <!-- ── SHIELD OUTER GLOW (subtle) ── -->
+  <path d="M250,12 L480,90 L480,280 Q480,420 250,520 Q20,420 20,280 L20,90 Z"
+        fill="none" stroke="#2472cc" stroke-width="3" opacity="0.3"/>
+</svg>
