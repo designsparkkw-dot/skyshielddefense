@@ -26,7 +26,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%;}
 body{
-  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
   background:var(--dark);
   color:var(--white);
   line-height:1.7;
@@ -92,24 +92,24 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;}
 
 /* ---------- Typography ---------- */
 h1,h2,h3,h4,h5,h6{
-  font-family:'Barlow Condensed','Inter','Helvetica Neue',Arial,sans-serif;
+  font-family:'Rajdhani','IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
   font-weight:700;line-height:1.1;
   letter-spacing:0.01em;
 }
 /* Body text uses Inter — clean, institutional */
 body,p,li,span,a,label,input,textarea,select{
-  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
 }
 /* Display headings get Barlow Condensed — commanding, precise */
 .hero-title,.section-title,.page-hero-title,.cap-title,.briefing-title{
-  font-family:'Barlow Condensed','Inter','Helvetica Neue',Arial,sans-serif;
+  font-family:'Rajdhani','IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
   font-weight:700;
   letter-spacing:0.02em;
   text-transform:uppercase;
 }
 /* Eyebrow labels — small, spaced, institutional */
 .eyebrow{
-  font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
   font-weight:600;
 }
 .eyebrow{
@@ -137,7 +137,7 @@ body,p,li,span,a,label,input,textarea,select{
   padding:13px 30px;border-radius:var(--radius);
   font-weight:700;font-size:0.8rem;
   letter-spacing:0.08em;text-transform:uppercase;
-  transition:var(--transition);font-family:'Barlow Condensed','Inter','Helvetica Neue',Arial,sans-serif;
+  transition:var(--transition);font-family:'Rajdhani','IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
   cursor:pointer;
 }
 .btn-primary{
