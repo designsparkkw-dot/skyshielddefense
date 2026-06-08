@@ -18,9 +18,9 @@
  */
 
 // ── CONFIGURE THESE THREE LINES ───────────────────────────────────
-define('SMTP_USER', 'info@skyshielddefence.com');    // ← your mailbox address
+define('SMTP_USER', 'info@skyshielddefense.com');    // ← your mailbox address
 define('SMTP_PASS', 'FILL_IN_YOUR_MAILBOX_PASSWORD'); // ← mailbox password (set in hPanel)
-define('MAIL_TO',   'info@skyshielddefence.com');    // ← where to deliver enquiries
+define('MAIL_TO',   'info@skyshielddefense.com');    // ← where to deliver enquiries
 // ──────────────────────────────────────────────────────────────────
 
 // Hostinger SMTP — do not change these
@@ -138,6 +138,6 @@ try {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Sorry, something went wrong sending your enquiry. Please email us directly at info@skyshielddefence.com.',
+        'message' => 'Sorry, something went wrong sending your enquiry. Please email us directly at info@skyshielddefense.com.',
     ]);
 }

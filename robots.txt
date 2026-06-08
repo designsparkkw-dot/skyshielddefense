@@ -1,11 +1,11 @@
 # Sky Shield Defence — robots.txt
-# https://www.skyshielddefence.com
+# https://www.skyshielddefense.com
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.skyshielddefence.com/sitemap.xml
+Sitemap: https://www.skyshielddefense.com/sitemap.xml
 
 # Disallow admin or private paths if they exist
 Disallow: /admin/
