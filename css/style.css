@@ -248,6 +248,7 @@ body,p,li,span,a,label,input,textarea,select{
   width:100%;height:100%;
   z-index:1;opacity:1;
   pointer-events:none;
+  filter:brightness(1.28) saturate(1.35) contrast(1.08);
 }
 /* Left-side overlay only — right side stays clear so animation shows */
 .hero-bg-img{ display:none; }
@@ -255,12 +256,22 @@ body,p,li,span,a,label,input,textarea,select{
   position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(
     to right,
-    rgba(6,14,26,0.92) 0%,
-    rgba(6,14,26,0.82) 30%,
-    rgba(6,14,26,0.40) 52%,
-    rgba(6,14,26,0.08) 70%,
+    rgba(6,14,26,0.74) 0%,
+    rgba(6,14,26,0.60) 28%,
+    rgba(6,14,26,0.28) 50%,
+    rgba(6,14,26,0.05) 70%,
     rgba(6,14,26,0.00) 100%
   );
+}
+.hero-bg-overlay::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 65% 55%,rgba(36,114,204,0.12) 0%,rgba(36,114,204,0) 60%);
+  animation:heroGlowPulse 6s ease-in-out infinite;
+}
+@keyframes heroGlowPulse{
+  0%,100%{opacity:0.55;}
+  50%{opacity:1;}
 }
 .hero-bg-tint{ display:none; }
 .hero-bg-line{ display:none; }
