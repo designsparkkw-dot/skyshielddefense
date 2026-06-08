@@ -861,6 +861,7 @@ body,p,li,span,a,label,input,textarea,select{
   .footer-bottom-inner{flex-direction:column;text-align:center;}
   .footer-legal{flex-direction:column;gap:0.4rem;align-items:center;}
   .form-grid{grid-template-columns:1fr;}
+  .product-grid[style]{grid-template-columns:1fr!important;}
   .product-grid{grid-template-columns:1fr;}
   .stats-bar-inner{grid-template-columns:1fr 1fr;}
   .stats-bar-item:nth-child(3){border-bottom:1px solid var(--border);}
