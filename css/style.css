@@ -150,6 +150,11 @@ body,p,li,span,a,label,input,textarea,select{
   border:1.5px solid var(--border-2);
 }
 .btn-outline:hover{border-color:var(--white);transform:translateY(-2px);}
+.btn-gold{
+  background:var(--gold);color:var(--dark);
+  border:1.5px solid var(--gold);
+}
+.btn-gold:hover{background:#d8bc6c;border-color:#d8bc6c;transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,168,75,0.35);}
 
 /* ---------- Navbar ---------- */
 .navbar{
