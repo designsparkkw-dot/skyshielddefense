@@ -868,6 +868,10 @@ body,p,li,span,a,label,input,textarea,select{
   div[style*="grid-template-columns:repeat(4,1fr)"]{
     grid-template-columns:repeat(2,1fr)!important;
   }
+  div[style*="grid-template-columns:repeat(5,1fr)"] > *:last-child:nth-child(odd),
+  div[style*="grid-template-columns:repeat(4,1fr)"] > *:last-child:nth-child(odd){
+    grid-column:span 2;
+  }
 }
 @media(max-width:380px){
   div[style*="grid-template-columns:repeat(5,1fr)"],
