@@ -864,6 +864,16 @@ body,p,li,span,a,label,input,textarea,select{
   .stats-bar-inner{grid-template-columns:1fr 1fr;}
   .stats-bar-item:nth-child(3){border-bottom:1px solid var(--border);}
   .cta-btns .btn{width:100%;justify-content:center;}
+  div[style*="grid-template-columns:repeat(5,1fr)"],
+  div[style*="grid-template-columns:repeat(4,1fr)"]{
+    grid-template-columns:repeat(2,1fr)!important;
+  }
+}
+@media(max-width:380px){
+  div[style*="grid-template-columns:repeat(5,1fr)"],
+  div[style*="grid-template-columns:repeat(4,1fr)"]{
+    grid-template-columns:1fr!important;
+  }
 }
 @media(max-width:360px){
   .logo-name{font-size:0.88rem;}
