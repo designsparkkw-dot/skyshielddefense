@@ -281,14 +281,38 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
     const orig = btn.innerHTML;
     btn.innerHTML = '<span>TRANSMITTING...</span>';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.innerHTML = '<span>✓ REQUEST RECEIVED — WE WILL CONTACT YOU WITHIN 4 HOURS</span>';
-      btn.style.background = 'rgba(0,255,136,0.15)';
-      btn.style.borderColor = 'var(--green)';
-      btn.style.color = 'var(--green)';
-      form.reset();
+
+    const resetBtn = () => {
       setTimeout(() => { btn.innerHTML = orig; btn.style = ''; btn.disabled = false; }, 6000);
-    }, 1600);
+    };
+
+    fetch('contact-handler.php', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+      .then(res => res.json().catch(() => ({ success: false, message: 'Unexpected response from the server.' })))
+      .then(data => {
+        if (data.success) {
+          btn.innerHTML = '<span>✓ ' + (data.message || 'REQUEST RECEIVED — WE WILL CONTACT YOU WITHIN 4 HOURS').toUpperCase() + '</span>';
+          btn.style.background = 'rgba(0,255,136,0.15)';
+          btn.style.borderColor = 'var(--green)';
+          btn.style.color = 'var(--green)';
+          form.reset();
+        } else {
+          btn.innerHTML = '<span>✕ ' + (data.message || 'SOMETHING WENT WRONG — PLEASE EMAIL US DIRECTLY').toUpperCase() + '</span>';
+          btn.style.background = 'rgba(255,80,80,0.15)';
+          btn.style.borderColor = '#ff5050';
+          btn.style.color = '#ff5050';
+        }
+        resetBtn();
+      })
+      .catch(() => {
+        btn.innerHTML = '<span>✕ COULD NOT SEND — PLEASE EMAIL US DIRECTLY AT INFO@SKYSHIELDDEFENCE.COM</span>';
+        btn.style.background = 'rgba(255,80,80,0.15)';
+        btn.style.borderColor = '#ff5050';
+        btn.style.color = '#ff5050';
+        resetBtn();
+      });
   });
 })();
 
