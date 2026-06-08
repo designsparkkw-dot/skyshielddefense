@@ -843,9 +843,7 @@ body,p,li,span,a,label,input,textarea,select{
   .nav-inner{height:68px;}
   .hero-content{padding:90px 1.2rem 50px;}
   .hero-title{font-size:2rem;}
-  .hero-stats{flex-direction:column;gap:0;}
-  .hero-stat{border-right:none;border-bottom:1px solid var(--border);}
-  .hero-stat:last-child{border-bottom:none;}
+  .hero-stats{display:none;}
   .testi-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;}
   .section-pad{padding:70px 0;}
