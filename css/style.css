@@ -728,6 +728,7 @@ body,p,li,span,a,label,input,textarea,select{
 .cta-secure{color:#94a8be;}
 .pillar-card:hover .pillar-cta{gap:0.75rem;}
 @media(max-width:900px){.pillar-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){.pillar-grid-detect{grid-template-columns:1fr!important;}}
 
 /* ============================================================
    ANIMATED COMMAND CTA
@@ -871,6 +872,9 @@ body,p,li,span,a,label,input,textarea,select{
   div[style*="grid-template-columns:repeat(5,1fr)"] > *:last-child:nth-child(odd),
   div[style*="grid-template-columns:repeat(4,1fr)"] > *:last-child:nth-child(odd){
     grid-column:span 2;
+  }
+  div[style*="grid-template-columns:repeat(3,1fr);gap:1px"]{
+    grid-template-columns:1fr!important;
   }
 }
 @media(max-width:380px){
