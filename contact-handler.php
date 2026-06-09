@@ -1,49 +1,10 @@
 <?php
 /**
- * Sky Shield Defence — Contact form mail handler (PHPMailer / SMTP)
- *
- * ─────────────────────────────────────────────────────────────────
- * SETUP — fill in the three lines below before going live:
- * ─────────────────────────────────────────────────────────────────
- * 1. SMTP_USER     → your full Hostinger mailbox address
- * 2. SMTP_PASS     → the password you set for that mailbox in hPanel
- * 3. MAIL_TO       → where enquiries should land (usually same address)
- *
- * After editing this file, SSH into Hostinger and run:
- *   cd ~/public_html && composer install --no-dev --optimize-autoloader
- *
- * Hostinger SMTP details (already set below — do not change):
- *   Host : smtp.hostinger.com   Port : 587   Encryption : STARTTLS
- * ─────────────────────────────────────────────────────────────────
+ * Sky Shield Defence — Contact form mail handler
+ * Uses PHP mail() routed through Hostinger's MTA.
+ * No Composer or external libraries required.
  */
 
-// ── CONFIGURE THESE THREE LINES ───────────────────────────────────
-define('SMTP_USER', 'info@skyshielddefense.com');    // ← your mailbox address
-define('SMTP_PASS', 'FILL_IN_YOUR_MAILBOX_PASSWORD'); // ← mailbox password (set in hPanel)
-define('MAIL_TO',   'info@skyshielddefense.com');    // ← where to deliver enquiries
-// ──────────────────────────────────────────────────────────────────
-
-// Hostinger SMTP — do not change these
-define('SMTP_HOST', 'smtp.hostinger.com');
-define('SMTP_PORT', 587);
-
-// ── Load PHPMailer ─────────────────────────────────────────────────
-$autoloader = __DIR__ . '/vendor/autoload.php';
-if (!file_exists($autoloader)) {
-    header('Content-Type: application/json');
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Mail library not installed. Please run: composer install',
-    ]);
-    exit;
-}
-require $autoloader;
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception as MailerException;
-
-// ── Only accept POST ───────────────────────────────────────────────
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -52,14 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// ── Sanitise helper ───────────────────────────────────────────────
+define('MAIL_TO', 'info@skyshielddefense.com');
+
 function field(string $key): string {
     if (!isset($_POST[$key])) return '';
-    $value = trim((string) $_POST[$key]);
-    return str_replace(["\r", "\n"], '', $value);
+    return str_replace(["\r", "\n"], '', trim((string) $_POST[$key]));
 }
 
-// ── Collect fields ────────────────────────────────────────────────
 $firstName = field('firstName');
 $lastName  = field('lastName');
 $email     = field('email');
@@ -71,15 +31,14 @@ $industry  = field('industry');
 $budget    = field('budget');
 $message   = trim((string) ($_POST['message'] ?? ''));
 
-// ── Validate ──────────────────────────────────────────────────────
 $errors = [];
-if ($firstName === '')                               $errors[] = 'First name is required.';
-if ($lastName  === '')                               $errors[] = 'Last name is required.';
+if ($firstName === '')  $errors[] = 'First name is required.';
+if ($lastName  === '')  $errors[] = 'Last name is required.';
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL))
-                                                     $errors[] = 'A valid email address is required.';
-if ($country  === '')                                $errors[] = 'Country is required.';
-if ($service  === '')                                $errors[] = 'Please select a service of interest.';
-if ($message  === '')                                $errors[] = 'Please describe your requirements.';
+                        $errors[] = 'A valid email address is required.';
+if ($country  === '')   $errors[] = 'Country is required.';
+if ($service  === '')   $errors[] = 'Please select a service of interest.';
+if ($message  === '')   $errors[] = 'Please describe your requirements.';
 
 if (!empty($errors)) {
     http_response_code(422);
@@ -87,7 +46,6 @@ if (!empty($errors)) {
     exit;
 }
 
-// ── Build the email body ──────────────────────────────────────────
 $subject = 'New Enquiry — ' . $service . ' (' . $firstName . ' ' . $lastName . ')';
 
 $body = implode("\n", [
@@ -106,38 +64,24 @@ $body = implode("\n", [
     $message,
 ]);
 
-// ── Send via PHPMailer / SMTP ─────────────────────────────────────
-$mail = new PHPMailer(true);
+$headers = implode("\r\n", [
+    'From: Sky Shield Defence Website <info@skyshielddefense.com>',
+    'Reply-To: ' . $firstName . ' ' . $lastName . ' <' . $email . '>',
+    'Content-Type: text/plain; charset=UTF-8',
+    'X-Mailer: PHP/' . phpversion(),
+]);
 
-try {
-    $mail->isSMTP();
-    $mail->Host       = SMTP_HOST;
-    $mail->SMTPAuth   = true;
-    $mail->Username   = SMTP_USER;
-    $mail->Password   = SMTP_PASS;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = SMTP_PORT;
-    $mail->CharSet    = 'UTF-8';
+$sent = @mail(MAIL_TO, $subject, $body, $headers);
 
-    $mail->setFrom(SMTP_USER, 'Sky Shield Defence Website');
-    $mail->addAddress(MAIL_TO, 'Sky Shield Defence');
-    $mail->addReplyTo($email, $firstName . ' ' . $lastName);
-
-    $mail->isHTML(false);
-    $mail->Subject = $subject;
-    $mail->Body    = $body;
-
-    $mail->send();
-
+if ($sent) {
     echo json_encode([
         'success' => true,
         'message' => 'Thank you — your request has been received. Our team will contact you shortly.',
     ]);
-
-} catch (MailerException $e) {
+} else {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Sorry, something went wrong sending your enquiry. Please email us directly at info@skyshielddefense.com.',
+        'message' => 'Sorry, something went wrong. Please email us directly at info@skyshielddefense.com.',
     ]);
 }
