@@ -277,6 +277,14 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
   if (!form) return;
   form.addEventListener('submit', e => {
     e.preventDefault();
+
+    // Block submission until all required fields — including the
+    // Privacy Policy / Terms agreement checkbox — are completed.
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     const btn = form.querySelector('.form-submit');
     const orig = btn.innerHTML;
     btn.innerHTML = '<span>TRANSMITTING...</span>';

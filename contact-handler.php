@@ -54,6 +54,8 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL))
 if ($country  === '')  $errors[] = 'Country is required.';
 if ($service  === '')  $errors[] = 'Please select a service of interest.';
 if ($message  === '')  $errors[] = 'Please describe your requirements.';
+if (!isset($_POST['agreeTerms']) || $_POST['agreeTerms'] === '')
+                       $errors[] = 'You must agree to the Privacy Policy before submitting.';
 
 if (!empty($errors)) {
     http_response_code(422);
