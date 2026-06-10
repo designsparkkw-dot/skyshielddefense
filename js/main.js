@@ -294,7 +294,7 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
       setTimeout(() => { btn.innerHTML = orig; btn.style = ''; btn.disabled = false; }, 6000);
     };
 
-    fetch('contact-handler.php', {
+    fetch('/api/contact', {
       method: 'POST',
       body: new FormData(form)
     })
@@ -315,7 +315,7 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
         resetBtn();
       })
       .catch(() => {
-        btn.innerHTML = '<span>✕ COULD NOT SEND — PLEASE EMAIL US DIRECTLY AT INFO@SKYSHIELDDEFENCE.COM</span>';
+        btn.innerHTML = '<span>✕ COULD NOT SEND — PLEASE EMAIL US DIRECTLY AT INFO@SKYSHIELDDEFENSE.COM</span>';
         btn.style.background = 'rgba(255,80,80,0.15)';
         btn.style.borderColor = '#ff5050';
         btn.style.color = '#ff5050';

@@ -1,6 +1,4 @@
 node_modules/
 .claude/
 serve.ps1
-vendor/
-composer.lock
-.deploy_key_tmp/
+package-lock.json
