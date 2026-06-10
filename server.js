@@ -75,12 +75,18 @@ app.post('/api/contact', upload.none(), async (req, res) => {
       },
     });
 
+    const messageDomain = SMTP_USER.split('@')[1] || 'skyshielddefense.com';
+
     await transporter.sendMail({
       from: `"Sky Shield Defence Website" <${SMTP_USER}>`,
       to: MAIL_TO,
       replyTo: `"${firstName} ${lastName}" <${email}>`,
       subject,
       text: body,
+      messageId: `<${Date.now()}.${Math.random().toString(36).slice(2)}@${messageDomain}>`,
+      headers: {
+        'X-Mailer': 'Sky Shield Defence Website Contact Form',
+      },
     });
 
     res.json({
