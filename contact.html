@@ -194,12 +194,12 @@
               <input class="form-input" type="email" id="email" name="email" placeholder="john@company.com" required autocomplete="email">
             </div>
             <div class="form-group">
-              <label class="form-label" for="phone">Phone Number</label>
-              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (226) 289-9652" autocomplete="tel">
+              <label class="form-label" for="phone">Phone Number *</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (226) 289-9652" required autocomplete="tel">
             </div>
             <div class="form-group">
-              <label class="form-label" for="company">Company / Organisation</label>
-              <input class="form-input" type="text" id="company" name="company" placeholder="Your Organisation" autocomplete="organization">
+              <label class="form-label" for="company">Company / Organisation *</label>
+              <input class="form-input" type="text" id="company" name="company" placeholder="Your Organisation" required autocomplete="organization">
             </div>
             <div class="form-group">
               <label class="form-label" for="country">Country *</label>
@@ -217,8 +217,8 @@
               </select>
             </div>
             <div class="form-group full">
-              <label class="form-label" for="industry">Industry / Sector</label>
-              <select class="form-select" id="industry" name="industry">
+              <label class="form-label" for="industry">Industry / Sector *</label>
+              <select class="form-select" id="industry" name="industry" required>
                 <option value="" disabled selected>Select your sector...</option>
                 <option>Airports &amp; Aviation</option>
                 <option>Energy &amp; Utilities</option>
@@ -234,8 +234,8 @@
               </select>
             </div>
             <div class="form-group full">
-              <label class="form-label" for="budget">Approximate Project Budget</label>
-              <select class="form-select" id="budget" name="budget">
+              <label class="form-label" for="budget">Approximate Project Budget *</label>
+              <select class="form-select" id="budget" name="budget" required>
                 <option value="" disabled selected>Select budget range...</option>
                 <option>Under £50,000</option>
                 <option>£50,000 – £250,000</option>

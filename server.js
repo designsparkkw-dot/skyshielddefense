@@ -34,8 +34,12 @@ app.post('/api/contact', upload.none(), async (req, res) => {
   if (!firstName) errors.push('First name is required.');
   if (!lastName)  errors.push('Last name is required.');
   if (!email || !emailRegex.test(email)) errors.push('A valid email address is required.');
+  if (!phone)    errors.push('Phone number is required.');
+  if (!company)  errors.push('Company / organisation is required.');
   if (!country)  errors.push('Country is required.');
   if (!service)  errors.push('Please select a service of interest.');
+  if (!industry) errors.push('Please select your industry / sector.');
+  if (!budget)   errors.push('Please select an approximate project budget.');
   if (!message)  errors.push('Please describe your requirements.');
   if (!field('agreeTerms')) errors.push('You must agree to the Privacy Policy before submitting.');
 
