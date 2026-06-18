@@ -1,7 +1,7 @@
 {
-  "name": "sky-shield-defence",
+  "name": "sky-shield-defense",
   "version": "1.0.0",
-  "description": "Sky Shield Defence website",
+  "description": "Sky Shield Defense website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

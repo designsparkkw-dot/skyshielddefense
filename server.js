@@ -50,7 +50,7 @@ app.post('/api/contact', upload.none(), async (req, res) => {
   const subject = `New Enquiry — ${service} (${firstName} ${lastName})`;
 
   const body = [
-    'New enquiry submitted via the Sky Shield Defence website contact form.',
+    'New enquiry submitted via the Sky Shield Defense website contact form.',
     '',
     `Name:                    ${firstName} ${lastName}`,
     `Email:                   ${email}`,
@@ -82,14 +82,14 @@ app.post('/api/contact', upload.none(), async (req, res) => {
     const messageDomain = SMTP_USER.split('@')[1] || 'skyshielddefense.com';
 
     await transporter.sendMail({
-      from: `"Sky Shield Defence Website" <${SMTP_USER}>`,
+      from: `"Sky Shield Defense Website" <${SMTP_USER}>`,
       to: MAIL_TO,
       replyTo: `"${firstName} ${lastName}" <${email}>`,
       subject,
       text: body,
       messageId: `<${Date.now()}.${Math.random().toString(36).slice(2)}@${messageDomain}>`,
       headers: {
-        'X-Mailer': 'Sky Shield Defence Website Contact Form',
+        'X-Mailer': 'Sky Shield Defense Website Contact Form',
       },
     });
 
@@ -114,5 +114,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Sky Shield Defence running on port ${PORT}`);
+  console.log(`Sky Shield Defense running on port ${PORT}`);
 });

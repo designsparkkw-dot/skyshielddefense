@@ -1,5 +1,5 @@
 /* ============================================================
-   SKY SHIELD DEFENCE — Main JS (Government/Defense Edition)
+   SKY SHIELD DEFENSE — Main JS (Government/Defense Edition)
    ============================================================ */
 
 /* ---------- Loading Screen ---------- */

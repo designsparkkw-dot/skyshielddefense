@@ -1,5 +1,5 @@
 /* ============================================================
-   SKY SHIELD DEFENCE — Cinematic Hero Background
+   SKY SHIELD DEFENSE — Cinematic Hero Background
    Multi-drone swarm intercept sequence
    ============================================================ */
 
