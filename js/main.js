@@ -324,6 +324,63 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
   });
 })();
 
+/* ---------- Lead capture popup ---------- */
+(function initLeadPopup() {
+  const popup = document.getElementById('leadPopup');
+  if (!popup) return;
+
+  const DISMISS_KEY = 'leadPopupDismissed';
+  if (sessionStorage.getItem(DISMISS_KEY)) return;
+
+  const show = () => popup.classList.add('show');
+  const hide = () => {
+    popup.classList.remove('show');
+    sessionStorage.setItem(DISMISS_KEY, '1');
+  };
+
+  setTimeout(show, 8000);
+
+  popup.querySelector('.lead-popup-close')?.addEventListener('click', hide);
+
+  const form = popup.querySelector('#leadForm');
+  const status = popup.querySelector('.lead-popup-status');
+
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+    status.className = 'lead-popup-status';
+
+    fetch('/api/lead', { method: 'POST', body: new FormData(form) })
+      .then(res => res.json().catch(() => ({ success: false, message: 'Unexpected response from the server.' })))
+      .then(data => {
+        status.textContent = data.message || (data.success ? 'Thank you!' : 'Something went wrong.');
+        status.classList.add(data.success ? 'success' : 'error');
+        if (data.success) {
+          form.reset();
+          setTimeout(hide, 2500);
+        } else {
+          btn.disabled = false;
+          btn.textContent = orig;
+        }
+      })
+      .catch(() => {
+        status.textContent = 'Could not send — please try again.';
+        status.classList.add('error');
+        btn.disabled = false;
+        btn.textContent = orig;
+      });
+  });
+})();
+
 /* ---------- Active nav link ---------- */
 (function() {
   const path = window.location.pathname.split('/').pop() || 'index.html';

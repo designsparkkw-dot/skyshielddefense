@@ -886,3 +886,88 @@ body,p,li,span,a,label,input,textarea,select{
   .cta-radar-box{width:120px;height:120px;}
   .cta-cmd-btns .btn{width:100%;justify-content:center;}
 }
+
+/* ---------- Lead capture popup ---------- */
+.lead-popup{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:340px;
+  max-width:90vw;
+  z-index:9999;
+  transform:translateY(40px) scale(0.96);
+  opacity:0;
+  pointer-events:none;
+  transition:transform 0.4s ease, opacity 0.4s ease;
+}
+.lead-popup.show{
+  transform:translateY(0) scale(1);
+  opacity:1;
+  pointer-events:auto;
+}
+.lead-popup-card{
+  background:var(--navy-mid);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-lg);
+  padding:1.5rem;
+  box-shadow:0 16px 48px rgba(0,0,0,0.55);
+  position:relative;
+}
+.lead-popup-close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  background:none;
+  border:none;
+  color:var(--gray-light);
+  font-size:1.4rem;
+  line-height:1;
+  cursor:pointer;
+  padding:4px;
+}
+.lead-popup-close:hover{color:var(--white);}
+.lead-popup-title{
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:0.4rem;
+  padding-right:1.2rem;
+}
+.lead-popup-desc{
+  font-size:0.8rem;
+  color:var(--gray-light);
+  line-height:1.55;
+  margin-bottom:1.1rem;
+}
+.lead-popup-form{
+  display:flex;
+  flex-direction:column;
+  gap:0.6rem;
+}
+.lead-popup-form input{
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius);
+  padding:0.65rem 0.8rem;
+  color:var(--white);
+  font-size:0.85rem;
+  font-family:inherit;
+  width:100%;
+}
+.lead-popup-form input::placeholder{color:var(--gray);}
+.lead-popup-form input:focus{outline:none;border-color:var(--blue-2);}
+.lead-popup-form button[type="submit"]{
+  margin-top:0.2rem;
+  width:100%;
+  justify-content:center;
+}
+.lead-popup-status{
+  font-size:0.78rem;
+  margin-top:0.7rem;
+  min-height:1em;
+}
+.lead-popup-status.success{color:#00d98c;}
+.lead-popup-status.error{color:#ff5050;}
+@media(max-width:520px){
+  .lead-popup{right:12px;bottom:12px;left:12px;width:auto;}
+}

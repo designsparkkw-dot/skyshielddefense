@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/style.css?v=15">
 
   <script type="application/ld+json">
   {
@@ -398,6 +398,22 @@
   </div></div></div>
 </footer>
 
-<script src="js/main.js?v=3" defer></script>
+<!-- LEAD CAPTURE POPUP -->
+<div id="leadPopup" class="lead-popup" aria-hidden="true">
+  <div class="lead-popup-card">
+    <button type="button" class="lead-popup-close" aria-label="Close">&times;</button>
+    <h3 class="lead-popup-title">Get a Free Security Assessment</h3>
+    <p class="lead-popup-desc">Leave your details and a Sky Shield Defense specialist will reach out with a tailored consultation.</p>
+    <form id="leadForm" class="lead-popup-form" novalidate>
+      <input type="text" name="name" placeholder="Full Name" required autocomplete="name">
+      <input type="email" name="email" placeholder="Email Address" required autocomplete="email">
+      <input type="text" name="company" placeholder="Company / Organisation" autocomplete="organization">
+      <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel">
+      <button type="submit" class="btn btn-gold">Request Callback</button>
+    </form>
+    <p class="lead-popup-status" aria-live="polite"></p>
+  </div>
+</div>
+<script src="js/main.js?v=6" defer></script>
 </body>
 </html>
