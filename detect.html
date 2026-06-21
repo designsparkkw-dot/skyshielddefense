@@ -34,7 +34,7 @@
   <meta property="og:url" content="https://www.skyshielddefense.com/detect.html">
   <meta property="og:image" content="https://www.skyshielddefense.com/images/og-detect.jpg">
 
-  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/style.css?v=19">
 
   <script type="application/ld+json">
   {
@@ -91,6 +91,17 @@
 
 <!-- PAGE HERO -->
 <section class="page-hero" aria-labelledby="detect-hero-heading">
+  <video
+    class="page-hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="images/intercepter-poster.jpg">
+    <source src="videos/intercepter.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:rgba(6,14,26,0.6);z-index:0;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,168,75,0.12) 0%,transparent 65%);z-index:0;"></div>
   <div class="container" style="position:relative;z-index:1;padding-top:3rem;padding-bottom:4rem;">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -110,28 +121,6 @@
     <div style="display:flex;gap:1rem;flex-wrap:wrap;">
       <a href="contact.html" class="btn btn-gold">Request a Threat Assessment</a>
       <a href="#systems" class="btn btn-outline">View Systems</a>
-    </div>
-  </div>
-</section>
-
-<!-- INTERCEPTOR SYSTEM IN ACTION -->
-<section class="section-pad" style="background:var(--navy-deep);" aria-labelledby="intercepter-video-heading">
-  <div class="container" style="max-width:960px;">
-    <div class="text-center" style="margin-bottom:2.5rem;">
-      <span class="section-label">System Demonstration</span>
-      <h2 class="section-title" id="intercepter-video-heading">See the Interceptor <span>In Action</span></h2>
-      <p class="section-sub">A simulated deployment showing real-time detection, tracking and interception of unauthorised UAV threats at a perimeter facility.</p>
-    </div>
-    <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border-2);box-shadow:0 16px 48px rgba(0,0,0,0.5);">
-      <video
-        controls
-        preload="metadata"
-        playsinline
-        poster="images/intercepter-poster.jpg"
-        style="width:100%;height:auto;display:block;background:#000;">
-        <source src="videos/intercepter.mp4" type="video/mp4">
-        Your browser does not support embedded video.
-      </video>
     </div>
   </div>
 </section>
