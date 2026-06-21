@@ -381,6 +381,84 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
   });
 })();
 
+/* ---------- AI chat widget ---------- */
+(function initChatWidget() {
+  const widget = document.getElementById('chatWidget');
+  if (!widget) return;
+
+  const toggle = document.getElementById('chatToggle');
+  const panel = document.getElementById('chatPanel');
+  const closeBtn = document.getElementById('chatClose');
+  const messagesEl = document.getElementById('chatMessages');
+  const form = document.getElementById('chatForm');
+  const input = document.getElementById('chatInput');
+
+  const history = [];
+  let open = false;
+
+  function setOpen(v) {
+    open = v;
+    panel.classList.toggle('open', open);
+    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if (open) input.focus();
+  }
+
+  toggle.addEventListener('click', () => setOpen(!open));
+  closeBtn.addEventListener('click', () => setOpen(false));
+
+  function addMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + (role === 'user' ? 'chat-msg-user' : 'chat-msg-bot');
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const div = document.createElement('div');
+    div.className = 'chat-msg chat-msg-bot chat-msg-typing';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return div;
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+
+    addMessage('user', text);
+    history.push({ role: 'user', content: text });
+    input.value = '';
+    input.disabled = true;
+
+    const typingEl = addTyping();
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: history }),
+    })
+      .then(res => res.json().catch(() => ({ error: 'Unexpected response from the server.' })))
+      .then(data => {
+        typingEl.remove();
+        const reply = data.reply || data.error || 'Sorry, something went wrong.';
+        addMessage('assistant', reply);
+        if (data.reply) history.push({ role: 'assistant', content: data.reply });
+      })
+      .catch(() => {
+        typingEl.remove();
+        addMessage('assistant', 'Could not reach the assistant — please try again or use the contact form.');
+      })
+      .finally(() => {
+        input.disabled = false;
+        input.focus();
+      });
+  });
+})();
+
 /* ---------- Active nav link ---------- */
 (function() {
   const path = window.location.pathname.split('/').pop() || 'index.html';
