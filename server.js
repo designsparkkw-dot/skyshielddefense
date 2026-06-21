@@ -2,7 +2,6 @@ const express  = require('express');
 const path     = require('path');
 const multer   = require('multer');
 const nodemailer = require('nodemailer');
-const Anthropic = require('@anthropic-ai/sdk');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -155,88 +154,79 @@ app.post('/api/lead', upload.none(), async (req, res) => {
   }
 });
 
-/* ---------- AI chat assistant ---------- */
-const anthropic = process.env.ANTHROPIC_API_KEY
-  ? new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-  : null;
+/* ---------- Free rule-based FAQ chat assistant (no API key, no cost) ---------- */
+const FAQ_RULES = [
+  {
+    keywords: ['hello', 'hi', 'hey', 'good morning', 'good afternoon'],
+    reply: "Hello — I'm the Sky Shield Defense assistant. Ask me about our protective coatings, counter-drone systems, or security governance services, or about where we operate.",
+  },
+  {
+    keywords: ['protect', 'coating', 'paint', 'polyurea', 'polyurethane', 'epoxy'],
+    reply: "Sky Shield Protect delivers industrial protective coatings — polyurea, polyurethane and epoxy systems — for critical infrastructure. For a tailored assessment, please use our contact form.",
+  },
+  {
+    keywords: ['drone', 'detect', 'intercept', 'counter-drone', 'counter drone', 'rf'],
+    reply: "Sky Shield Detect & Intercept provides AI-powered counter-drone systems with detection and RF defeat/interception capabilities. Specific technical details require a confidential consultation — please reach out via our contact form.",
+  },
+  {
+    keywords: ['secure', 'security governance', 'governance', 'physical security', 'cyber'],
+    reply: "Sky Shield Secure delivers integrated security governance — combining physical, digital and personnel security — for governments and critical infrastructure operators.",
+  },
+  {
+    keywords: ['price', 'cost', 'quote', 'pricing', 'how much', 'budget'],
+    reply: "Pricing depends on the scope of your project, so we don't quote figures here. Please fill out our contact form for a free, tailored assessment — our team will follow up directly.",
+  },
+  {
+    keywords: ['contact', 'phone', 'email', 'reach', 'call', 'talk to someone'],
+    reply: "You can reach us at info@skyshielddefense.com or +1 (226) 289-9652, or fill out the contact form at /contact.html for a free assessment.",
+  },
+  {
+    keywords: ['location', 'where', 'office', 'hq', 'headquarters', 'address', 'based'],
+    reply: "Our USA HQ is at 1309 Coffeen Avenue STE 1200, Sheridan, Wyoming 82801. We currently deliver services exclusively across the MENA region and Africa, with a Kuwait Regional Hub for the Middle East.",
+  },
+  {
+    keywords: ['experience', 'years', 'how long', 'about you', 'who are you', 'history'],
+    reply: "Sky Shield Defense has 30+ years in the industry, with 2,000+ certified professionals operating across 6 continents and 80+ countries. Our tagline: \"Total Defense. Zero Compromise.\"",
+  },
+  {
+    keywords: ['sector', 'industry', 'industries', 'who do you serve', 'clients'],
+    reply: "We serve Government, Military, Airports & Aviation, Energy & Utilities, Oil & Gas, Maritime, Corrections, Finance & Corporate, Diplomatic/Embassies, Luxury Estates & VIPs, Healthcare & Research, and Construction & Infrastructure.",
+  },
+  {
+    keywords: ['thank', 'thanks', 'appreciate'],
+    reply: "You're welcome! Let me know if there's anything else you'd like to know, or visit /contact.html when you're ready for a free assessment.",
+  },
+  {
+    keywords: ['bye', 'goodbye', 'see you'],
+    reply: "Thanks for stopping by — feel free to reach out any time at info@skyshielddefense.com.",
+  },
+];
 
-const CHAT_SYSTEM_PROMPT = `You are the website chat assistant for Sky Shield Defense, a global security company. Your job is to answer visitor questions helpfully and concisely, and to encourage promising enquiries to use the contact form.
+const FALLBACK_REPLY = "I'm not sure I can answer that directly — I can help with questions about our Protect, Detect & Intercept, and Secure services, our sectors, or how to get in touch. For anything else, please use our contact form at /contact.html and a specialist will follow up.";
 
-COMPANY FACTS (only state what's listed here — never invent details, pricing, certifications, or claims not provided):
-- Tagline: "Total Defense. Zero Compromise."
-- 30+ years in the industry, 2,000+ certified global professionals, operations across 6 continents, active in 80+ countries.
-- Three capability pillars:
-  1. Protect — industrial protective coatings (polyurea, polyurethane, epoxy systems) for critical infrastructure.
-  2. Detect & Intercept — AI-powered counter-drone systems with detection and RF defeat/interception capabilities.
-  3. Secure — integrated security governance combining physical, digital, and personnel security.
-- Sectors served: Government, Military, Airports & Aviation, Energy & Utilities, Oil & Gas, Maritime, Corrections, Finance & Corporate, Diplomatic/Embassies, Luxury Estates & VIPs, Healthcare & Research, Construction & Infrastructure.
-- Currently delivers services exclusively across the MENA region and Africa, with a Kuwait Regional Hub for the Middle East.
-- USA HQ: 1309 Coffeen Avenue STE 1200, Sheridan, Wyoming 82801.
-- Contact: info@skyshielddefense.com, +1 (226) 289-9652. Contact form: /contact.html
-
-RULES:
-- Keep answers short (2-4 sentences) — this is a small website chat widget, not a long-form assistant.
-- Never give specific pricing, contract terms, or technical/operational security details (e.g. exact counter-drone frequencies, defeat mechanisms) — these require a confidential consultation. Direct those questions to the contact form.
-- Never discuss unrelated topics (general tech support, personal advice, other companies, world events). Politely redirect to how Sky Shield Defense can help.
-- If a visitor seems to have a real project or enquiry, encourage them to fill out the contact form at /contact.html for a free assessment.
-- Be professional and discreet, matching a serious government/defense-sector audience.`;
-
-// Minimal per-IP rate limit to control API cost exposure from abuse.
-const chatRateLimit = new Map(); // ip -> { count, windowStart }
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
-const RATE_LIMIT_MAX = 20;
-
-function isRateLimited(ip) {
-  const now = Date.now();
-  const entry = chatRateLimit.get(ip);
-  if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
-    chatRateLimit.set(ip, { count: 1, windowStart: now });
-    return false;
+function matchFaq(text) {
+  const lower = text.toLowerCase();
+  for (const rule of FAQ_RULES) {
+    if (rule.keywords.some(kw => lower.includes(kw))) {
+      return rule.reply;
+    }
   }
-  entry.count++;
-  return entry.count > RATE_LIMIT_MAX;
+  return FALLBACK_REPLY;
 }
 
-app.post('/api/chat', async (req, res) => {
-  if (!anthropic) {
-    return res.status(503).json({ error: 'Chat assistant is not configured yet.' });
-  }
-
-  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress;
-  if (isRateLimited(ip)) {
-    return res.status(429).json({ error: 'Too many messages — please try again in a few minutes.' });
-  }
-
+app.post('/api/chat', (req, res) => {
   const messages = Array.isArray(req.body?.messages) ? req.body.messages : null;
   if (!messages || messages.length === 0) {
     return res.status(400).json({ error: 'No message provided.' });
   }
 
-  const cleanMessages = messages
-    .slice(-10) // cap conversation history sent per request
-    .filter(m => (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
-    .map(m => ({ role: m.role, content: m.content.slice(0, 1000) }));
-
-  if (cleanMessages.length === 0) {
+  const lastUserMessage = [...messages].reverse().find(m => m.role === 'user' && typeof m.content === 'string');
+  if (!lastUserMessage || !lastUserMessage.content.trim()) {
     return res.status(400).json({ error: 'No valid message provided.' });
   }
 
-  try {
-    const response = await anthropic.messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 300,
-      system: CHAT_SYSTEM_PROMPT,
-      messages: cleanMessages,
-    });
-
-    const reply = response.content.find(b => b.type === 'text')?.text
-      || "Sorry, I couldn't generate a response — please try again or use the contact form.";
-
-    res.json({ reply });
-  } catch (err) {
-    console.error('Chat error:', err);
-    res.status(500).json({ error: 'Sorry, the assistant is temporarily unavailable. Please try the contact form instead.' });
-  }
+  const reply = matchFaq(lastUserMessage.content.slice(0, 1000));
+  res.json({ reply });
 });
 
 /* ---------- Static site ---------- */
