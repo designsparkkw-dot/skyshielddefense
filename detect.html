@@ -101,6 +101,16 @@
     poster="images/intercepter-poster.jpg">
     <source src="videos/intercepter.mp4" type="video/mp4">
   </video>
+  <script>
+    (function(){
+      var v = document.querySelector('.page-hero-video');
+      if (!v) return;
+      v.muted = true;
+      var tryPlay = function(){ v.play().catch(function(){}); };
+      if (v.readyState >= 2) tryPlay();
+      else v.addEventListener('loadeddata', tryPlay, { once: true });
+    })();
+  </script>
   <div style="position:absolute;inset:0;background:rgba(6,14,26,0.32);z-index:0;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,168,75,0.12) 0%,transparent 65%);z-index:0;"></div>
   <div class="container" style="position:relative;z-index:1;padding-top:3rem;padding-bottom:4rem;">
