@@ -1075,3 +1075,58 @@ body,p,li,span,a,label,input,textarea,select{
   .chat-widget{left:12px;bottom:12px;}
   .chat-panel{width:calc(100vw - 24px);}
 }
+
+/* ---------- Soro blog embed — themed to match the site ---------- */
+#soro-blog .soro-blog{
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  background:transparent;
+  color:var(--white);
+  max-width:100%;
+}
+#soro-blog .soro-blog-back{
+  background:var(--surface-2);
+  border:1px solid var(--border-2);
+  color:var(--gray-light);
+  border-radius:var(--radius);
+}
+#soro-blog .soro-blog-back:hover{
+  background:var(--surface-3);
+  border-color:var(--blue-2);
+}
+#soro-blog .soro-blog-card{
+  background:var(--surface);
+  border:1px solid var(--border-2);
+  border-radius:var(--radius-lg);
+}
+#soro-blog .soro-blog-card:hover{
+  border-color:var(--blue-2);
+  box-shadow:0 8px 24px rgba(0,0,0,0.35);
+}
+#soro-blog .soro-blog-card-title,
+#soro-blog h2.soro-blog-card-title,
+#soro-blog .soro-blog-article-title{
+  font-family:'Rajdhani','IBM Plex Sans',sans-serif;
+  font-weight:700;
+  color:var(--white);
+}
+#soro-blog .soro-blog-card-excerpt{color:var(--gray-light);}
+#soro-blog .soro-blog-card-date,
+#soro-blog .soro-blog-article-date{color:var(--gray);}
+#soro-blog .soro-blog-article-content{
+  color:var(--gray-light);
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+}
+#soro-blog .soro-blog-article-content h1,
+#soro-blog .soro-blog-article-content h2,
+#soro-blog .soro-blog-article-content h3{
+  font-family:'Rajdhani','IBM Plex Sans',sans-serif;
+  color:var(--white);
+}
+#soro-blog .soro-blog-article-content a{color:var(--blue-2);}
+#soro-blog .soro-blog-empty,
+#soro-blog .soro-blog-loading{color:var(--gray-light);}
+#soro-blog .soro-blog-spinner{
+  border:2px solid var(--border-2);
+  border-top-color:var(--blue-2);
+}
+#soro-blog .soro-blog-error{color:#ff5050;}
