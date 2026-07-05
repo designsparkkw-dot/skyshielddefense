@@ -1,4 +1,4 @@
-# Sky Shield Defense — robots.txt
+# Sky Shield Defense - robots.txt
 # https://www.skyshielddefense.com
 
 User-agent: *

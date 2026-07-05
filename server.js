@@ -8,6 +8,17 @@ const app  = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(compression());
+
+// Canonical host: 301-redirect non-www (and http) to https://www.
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  const proto = req.headers['x-forwarded-proto'] || req.protocol;
+  if (host === 'skyshielddefense.com' || (proto === 'http' && host.endsWith('skyshielddefense.com'))) {
+    return res.redirect(301, `https://www.skyshielddefense.com${req.originalUrl}`);
+  }
+  next();
+});
+
 app.use(express.json({ limit: '20kb' }));
 
 // Parses multipart/form-data (forms are sent via FormData)
@@ -237,12 +248,21 @@ app.use(express.static(path.join(__dirname), {
   setHeaders(res, filePath) {
     if (filePath.endsWith('.html')) {
       res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    } else {
+      res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
     }
   },
 }));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Unknown paths return a real 404 (no soft-404 / directory-listing behaviour)
+app.use((req, res) => {
+  res.status(404).send(
+    '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>404 | Sky Shield Defense</title>' +
+    '<meta name="robots" content="noindex"></head>' +
+    '<body style="background:#060e1a;color:#f0f4f8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;">' +
+    '<div style="text-align:center;"><h1>404 — Page Not Found</h1>' +
+    '<p><a href="/" style="color:#2472cc;">Return to skyshielddefense.com</a></p></div></body></html>'
+  );
 });
 
 app.listen(PORT, () => {
