@@ -488,5 +488,5 @@
 
   resize();
   window.addEventListener('resize', resize);
-  frame();
+  requestAnimationFrame(frame);
 })();

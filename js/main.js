@@ -331,9 +331,15 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
   const DISMISS_KEY = 'leadPopupDismissed';
   if (sessionStorage.getItem(DISMISS_KEY)) return;
 
-  const show = () => popup.classList.add('show');
+  const show = () => {
+    popup.classList.add('show');
+    popup.removeAttribute('aria-hidden');
+    popup.removeAttribute('inert');
+  };
   const hide = () => {
     popup.classList.remove('show');
+    popup.setAttribute('aria-hidden', 'true');
+    popup.setAttribute('inert', '');
     sessionStorage.setItem(DISMISS_KEY, '1');
   };
 
@@ -399,7 +405,8 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
     open = v;
     panel.classList.toggle('open', open);
     panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-    if (open) input.focus();
+    if (open) { panel.removeAttribute('inert'); input.focus(); }
+    else { panel.setAttribute('inert', ''); }
   }
 
   toggle.addEventListener('click', () => setOpen(!open));

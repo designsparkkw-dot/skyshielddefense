@@ -1,11 +1,13 @@
-const express  = require('express');
-const path     = require('path');
-const multer   = require('multer');
-const nodemailer = require('nodemailer');
+const express     = require('express');
+const path        = require('path');
+const multer      = require('multer');
+const nodemailer  = require('nodemailer');
+const compression = require('compression');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(compression());
 app.use(express.json({ limit: '20kb' }));
 
 // Parses multipart/form-data (forms are sent via FormData)
@@ -230,7 +232,14 @@ app.post('/api/chat', (req, res) => {
 });
 
 /* ---------- Static site ---------- */
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname), {
+  maxAge: '1y',
+  setHeaders(res, filePath) {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    }
+  },
+}));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
