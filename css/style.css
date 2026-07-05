@@ -76,8 +76,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;}
   background:var(--dark);
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:2rem;
+  animation:loaderAutoDismiss 0.35s ease 1.5s forwards;
 }
 #loader.out{opacity:0;pointer-events:none;transition:opacity 0.2s ease;}
+@keyframes loaderAutoDismiss{to{opacity:0;pointer-events:none;}}
 .loader-logo-box{
   background:rgba(255,255,255,0.94);
   border-radius:12px;padding:10px 14px;

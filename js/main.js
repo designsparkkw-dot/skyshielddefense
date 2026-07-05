@@ -4,13 +4,12 @@
 
 /* ---------- Loading Screen ---------- */
 (function initLoader() {
-  const loader = document.getElementById('loading-screen');
+  const loader = document.getElementById('loader');
   if (!loader) return;
-  // Hide after animation completes (~3.8s)
   setTimeout(() => {
-    loader.classList.add('hidden');
-    setTimeout(() => { loader.style.display = 'none'; }, 900);
-  }, 3800);
+    loader.classList.add('out');
+    setTimeout(() => { loader.style.display = 'none'; }, 300);
+  }, 500);
 })();
 
 /* ---------- Navbar scroll ---------- */
