@@ -44,11 +44,111 @@
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Sky Shield Detect — Counter-Drone Detection & Interception",
-    "provider": { "@type": "Organization", "name": "Sky Shield Defense", "url": "https://www.skyshielddefense.com" },
+    "provider": {
+      "@type": "Organization",
+      "name": "Sky Shield Defense",
+      "url": "https://www.skyshielddefense.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1309 Coffeen Avenue STE 1200",
+        "addressLocality": "Sheridan",
+        "addressRegion": "WY",
+        "postalCode": "82801",
+        "addressCountry": "US"
+      }
+    },
     "description": "AI-powered multi-sensor drone detection and interception, 3D tracking, airspace management and RF defeat systems for airports, prisons, stadiums and critical infrastructure.",
     "areaServed": "Worldwide",
     "url": "https://www.skyshielddefense.com/detect.html",
-    "serviceType": "Counter-Drone Security"
+    "serviceType": "Counter-Drone Security",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Counter-Drone Systems",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AEROSENTRY — Fixed perimeter drone detection" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AEROSENTRY MARINE — Maritime counter-drone deployment" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AEROSENTRY PATROL — Mobile rapid-deploy C-UAS" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AERODOME — Fixed site RF defeat system" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AEROTRACKER — Airspace management platform" } }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.skyshielddefense.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://www.skyshielddefense.com/#capabilities" },
+      { "@type": "ListItem", "position": 3, "name": "Detect & Intercept", "item": "https://www.skyshielddefense.com/detect.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a counter-drone system?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A counter-drone (C-UAS) system is an integrated platform that detects, tracks, identifies and neutralises unauthorised unmanned aerial vehicles (UAVs). Sky Shield Detect uses multi-sensor technology combining radar, RF detection, acoustic sensing, optical cameras and AI fusion to provide complete airspace awareness and hostile drone defeat capability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do drone interception systems work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our systems work in four stages: (1) Detect — multi-sensor arrays identify drone signatures across radar, RF, acoustic and optical spectrums; (2) Track — AI fusion builds a real-time 3D track of every airborne object; (3) Classify — automated algorithms distinguish authorised from hostile UAVs; (4) Defeat — RF neutralisation disrupts command and navigation signals, forcing the drone to return-to-home or land safely without physical destruction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which sectors and industries need counter-drone protection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Counter-drone systems are essential for airports and aviation facilities, prisons and correctional facilities, sports stadiums and public venues, critical infrastructure (power stations, water treatment plants, communications hubs), maritime vessels and superyachts, corporate campuses and data centres, government and military installations, and VIP/executive protection. Any site where unauthorised drone access poses a security, safety or operational risk requires a tailored C-UAS solution."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can counter-drone systems protect airports from UAV disruption?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Airport drone incursions have increased by over 400% in five years, with a single unauthorised UAV capable of closing a runway and costing millions in lost revenue per hour. Sky Shield Detect's AEROSENTRY platform provides perimeter-wide detection and RF neutralisation that integrates directly with existing ATM and UTM infrastructure, enabling airports to detect and defeat drone threats without impacting legitimate air traffic."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is RF defeat and is drone jamming legal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RF defeat (radio frequency neutralisation) disrupts the command and navigation signals that control a hostile drone, causing it to return-to-home or land safely — without physically destroying it. Legality varies by jurisdiction and end-user authorisation. Sky Shield Defense deploys systems in full compliance with applicable local regulatory frameworks and provides comprehensive compliance guidance as part of every deployment engagement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can a counter-drone system be deployed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sky Shield Detect offers both fixed and rapid-deploy configurations. Fixed installations (AEROSENTRY) are permanently commissioned for airports, prisons and critical infrastructure. Mobile systems (AEROSENTRY PATROL) can be operational within hours for events, temporary security operations or emergency response. All deployments include operator training and full integration with existing security infrastructure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of drones can your systems detect and intercept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our multi-sensor architecture — combining radar, RF spectrum analysis, acoustic detection, optical and thermal cameras, and AI classification — is effective against the vast majority of commercial and modified drones, including small consumer models, FPV racing drones, modified delivery drones, and larger professional UAVs. The system continuously updates its drone signature library to account for new models as they enter the market."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -391,6 +491,55 @@
         References and technical briefings are available exclusively under signed NDA.
       </p>
       <a href="contact.html" class="btn btn-primary">Initiate Confidential Contact</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="section-pad" style="background:var(--navy-mid);" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:800px;">
+    <div class="text-center" style="margin-bottom:3rem;">
+      <span class="section-label">Common Questions</span>
+      <h2 class="section-title" id="faq-heading">Counter-Drone <span>FAQs</span></h2>
+      <p class="section-subtitle">Everything you need to know about drone detection, interception and defeat systems.</p>
+    </div>
+    <div style="display:grid;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+
+      <details class="faq-item">
+        <summary class="faq-q">What is a counter-drone system?</summary>
+        <div class="faq-a">A counter-drone (C-UAS) system is an integrated platform that detects, tracks, identifies and neutralises unauthorised unmanned aerial vehicles (UAVs). Sky Shield Detect uses multi-sensor technology combining radar, RF detection, acoustic sensing, optical cameras and AI fusion to provide complete airspace awareness and hostile drone defeat capability.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How do drone interception systems work?</summary>
+        <div class="faq-a">Our systems work in four stages: <strong style="color:var(--white);">Detect</strong> — multi-sensor arrays identify drone signatures across radar, RF and acoustic spectrums; <strong style="color:var(--white);">Track</strong> — AI fusion builds a real-time 3D track of every airborne object; <strong style="color:var(--white);">Classify</strong> — automated algorithms distinguish authorised from hostile UAVs; <strong style="color:var(--white);">Defeat</strong> — RF neutralisation disrupts command and navigation signals, forcing a safe return-to-home or controlled landing.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Which sectors and industries need counter-drone protection?</summary>
+        <div class="faq-a">Counter-drone systems are essential for airports and aviation facilities, prisons and correctional facilities, sports stadiums and public venues, critical infrastructure (power stations, water treatment, communications hubs), maritime vessels and superyachts, corporate campuses and data centres, government and military installations, and VIP/executive protection. Any site where unauthorised drone access poses a security, safety or operational risk requires a tailored C-UAS solution.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Can counter-drone systems protect airports from UAV disruption?</summary>
+        <div class="faq-a">Yes. Airport drone incursions have increased by over 400% in five years, with a single unauthorised UAV capable of closing a runway and costing millions in lost revenue per hour. Sky Shield Detect's AEROSENTRY platform provides perimeter-wide detection and RF neutralisation that integrates directly with existing ATM and UTM infrastructure — enabling airports to detect and defeat drone threats without impacting legitimate air traffic.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What is RF defeat and is drone jamming legal?</summary>
+        <div class="faq-a">RF defeat (radio frequency neutralisation) disrupts the command and navigation signals that control a hostile drone, causing it to return-to-home or land safely without physical destruction. Legality varies by jurisdiction and end-user authorisation. Sky Shield Defense deploys systems in full compliance with applicable local regulatory frameworks and provides comprehensive compliance guidance as part of every deployment engagement.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How quickly can a counter-drone system be deployed?</summary>
+        <div class="faq-a">Sky Shield Detect offers both fixed and rapid-deploy configurations. Fixed installations (AEROSENTRY) are permanently commissioned for airports, prisons and critical infrastructure. Mobile systems (AEROSENTRY PATROL) can be operational within hours for events, temporary operations or emergency response. All deployments include operator training and full integration with existing security infrastructure.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What types of drones can your systems detect and intercept?</summary>
+        <div class="faq-a">Our multi-sensor architecture — combining radar, RF spectrum analysis, acoustic detection, optical and thermal cameras, and AI classification — is effective against the vast majority of commercial and modified drones, including small consumer models, FPV racing drones, modified delivery drones and larger professional UAVs. The system continuously updates its drone signature library to account for new models as they enter the market.</div>
+      </details>
+
     </div>
   </div>
 </section>
