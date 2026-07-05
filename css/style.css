@@ -1130,6 +1130,7 @@ body,p,li,span,a,label,input,textarea,select{
   border-top-color:var(--blue-2);
 }
 #soro-blog .soro-blog-error{color:#ff5050;}
+#soro-blog{ min-height:520px; }
 
 /* ---------- FAQ accordion (detect.html) ---------- */
 .faq-item{
