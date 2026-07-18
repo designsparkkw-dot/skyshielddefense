@@ -129,10 +129,13 @@ app.post('/api/contact', upload.none(), async (req, res) => {
 app.post('/api/lead', upload.none(), async (req, res) => {
   const f = (key) => field(req, key);
 
-  const name    = f('name');
-  const email   = f('email');
-  const company = f('company');
-  const phone   = f('phone');
+  const name     = f('name');
+  const email    = f('email');
+  const company  = f('company');
+  const phone    = f('phone');
+  const interest = f('interest');
+  const source   = f('source');
+  const message  = (req.body && req.body.message ? String(req.body.message) : '').trim();
 
   const errors = [];
   if (!name)  errors.push('Name is required.');
@@ -142,15 +145,21 @@ app.post('/api/lead', upload.none(), async (req, res) => {
     return res.status(422).json({ success: false, message: errors.join(' ') });
   }
 
-  const subject = `New Website Lead — ${name}`;
+  const subject = source
+    ? `New Lead — ${source} (${name})`
+    : `New Website Lead — ${name}`;
   const body = [
-    'A visitor submitted the quick lead-capture popup on the Sky Shield Defense website.',
+    source
+      ? `A visitor submitted the lead form on the ${source} landing page.`
+      : 'A visitor submitted the quick lead-capture popup on the Sky Shield Defense website.',
     '',
     `Name:                    ${name}`,
     `Email:                   ${email}`,
     `Company / Organisation:  ${company || '—'}`,
     `Phone:                   ${phone   || '—'}`,
-  ].join('\n');
+    interest ? `Interested In:           ${interest}` : null,
+    message  ? `\nProject Details:\n${message}` : null,
+  ].filter(l => l !== null).join('\n');
 
   try {
     await sendMail({ subject, body, replyName: name, replyEmail: email });
