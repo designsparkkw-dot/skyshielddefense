@@ -68,13 +68,52 @@
     .lp-hero-grid{
       display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;align-items:start;
     }
-    .lp-form-card{
-      background:var(--surface);border:1px solid var(--border-2);
-      border-radius:var(--radius-lg);padding:2rem;
-      box-shadow:0 20px 60px rgba(0,0,0,0.45);
+    .lp-h1{
+      font-family:'Rajdhani','IBM Plex Sans',sans-serif;
+      font-size:clamp(2.6rem,4.8vw,4.1rem);
+      font-weight:900;line-height:1.04;
+      letter-spacing:0.01em;text-transform:uppercase;
+      color:var(--white);
     }
-    .lp-form-card h2{font-size:1.15rem;color:var(--white);margin-bottom:0.4rem;}
-    .lp-form-card p{font-size:0.8rem;color:var(--gray-light);margin-bottom:1.4rem;line-height:1.7;}
+    .lp-h1 span{color:var(--gold);}
+    .lp-checks{display:flex;flex-wrap:wrap;gap:0.6rem 1.4rem;margin:1.6rem 0 2rem;}
+    .lp-check{display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:600;color:var(--white);}
+    .lp-check svg{flex-shrink:0;}
+    .lp-form-card{
+      background:var(--surface);border:1px solid rgba(200,168,75,0.45);
+      border-top:3px solid var(--gold);
+      border-radius:var(--radius-lg);padding:2rem;
+      box-shadow:0 0 0 1px rgba(200,168,75,0.08),0 24px 70px rgba(0,0,0,0.55);
+    }
+    .lp-form-card h2{
+      font-family:'Rajdhani','IBM Plex Sans',sans-serif;
+      font-size:1.55rem;font-weight:700;line-height:1.2;
+      text-transform:uppercase;color:var(--white);margin-bottom:0.5rem;
+    }
+    .lp-form-card h2 span{color:var(--gold);}
+    .lp-form-card>p{font-size:0.82rem;color:var(--gray-light);margin-bottom:1.4rem;line-height:1.7;}
+    .lp-cta-btn{
+      justify-content:center;width:100%;
+      padding:17px 30px !important;font-size:0.95rem !important;
+      letter-spacing:0.1em;
+      box-shadow:0 8px 30px rgba(200,168,75,0.35);
+    }
+    .lp-micro{
+      display:flex;justify-content:center;gap:0.9rem;flex-wrap:wrap;
+      font-size:0.7rem;color:var(--gray-light);margin-top:0.7rem;
+    }
+    .lp-micro span{display:flex;align-items:center;gap:5px;}
+    .lp-mobile-cta{
+      display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;
+      background:rgba(6,14,26,0.97);border-top:1px solid var(--border-2);
+      padding:0.7rem 1rem;gap:0.7rem;
+      box-shadow:0 -8px 30px rgba(0,0,0,0.5);
+    }
+    .lp-mobile-cta a{flex:1;justify-content:center;padding:13px 10px;font-size:0.78rem;}
+    @media(max-width:900px){
+      .lp-mobile-cta{display:flex;}
+      body{padding-bottom:70px;}
+    }
     .lp-form{display:flex;flex-direction:column;gap:0.8rem;}
     .lp-form input,.lp-form select,.lp-form textarea{
       width:100%;padding:12px 14px;border-radius:var(--radius);
@@ -106,7 +145,7 @@
     .lp-app h4{color:var(--white);font-size:0.9rem;margin-bottom:0.4rem;}
     .lp-app p{color:var(--gray-light);font-size:0.78rem;line-height:1.65;}
     .lp-proof{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center;}
-    .lp-proof-val{font-family:'Rajdhani','IBM Plex Sans',sans-serif;font-size:2rem;font-weight:700;color:var(--gold);}
+    .lp-proof-val{font-family:'Rajdhani','IBM Plex Sans',sans-serif;font-size:2.8rem;font-weight:700;color:var(--gold);line-height:1;}
     .lp-proof-lbl{font-size:0.68rem;color:var(--gray-light);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;}
     @media(max-width:900px){
       .lp-hero-grid{grid-template-columns:1fr;gap:2.5rem;}
@@ -144,16 +183,22 @@
   <div class="container">
     <div class="lp-hero-grid">
       <div>
-        <span class="eyebrow">Sky Shield Protect — Industrial Coatings</span>
-        <h1 class="page-hero-title" style="max-width:none;">
-          Industrial Polyurea Coatings<br>
-          <span style="color:var(--blue-2);">That Outlast the Threat</span>
+        <span class="eyebrow" style="color:var(--gold);">Free Assessment &middot; Response Within 24 Hours</span>
+        <h1 class="lp-h1">
+          Military-Grade<br>
+          <span>Polyurea Coatings</span><br>
+          One Spray. Decades <br>of Protection.
         </h1>
-        <p style="color:var(--gray-light);font-size:1rem;line-height:1.9;margin:1.5rem 0 2rem;max-width:540px;">
-          Military-grade polyurea protection against corrosion, abrasion, chemical attack
-          and blast fragmentation — applied by certified specialists and engineered to
-          extend critical asset life by decades. Serving the MENA region &amp; Africa.
+        <p style="color:var(--gray-light);font-size:1.08rem;line-height:1.85;margin:1.5rem 0 0;max-width:540px;">
+          Corrosion, abrasion, chemical attack, even blast fragmentation — nothing gets
+          through. Applied by certified specialists across the MENA region &amp; Africa.
         </p>
+        <div class="lp-checks">
+          <div class="lp-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cures in seconds</div>
+          <div class="lp-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>30+ years proven</div>
+          <div class="lp-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Defense certified</div>
+          <div class="lp-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8a84b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Same-day return to service</div>
+        </div>
 
         <div style="display:flex;flex-direction:column;">
           <div class="lp-benefit">
@@ -182,8 +227,8 @@
 
       <!-- LEAD FORM -->
       <div class="lp-form-card" id="quote">
-        <h2>Get a Free Coating Assessment</h2>
-        <p>Tell us about your asset and a Sky Shield Protect specialist will respond within one business day. No obligation, complete discretion.</p>
+        <h2>Get Your <span>Free</span> Coating Assessment</h2>
+        <p>Tell us about your asset — a Sky Shield Protect specialist will come back with a tailored recommendation within 24 hours.</p>
         <form id="lpForm" class="lp-form" novalidate>
           <input type="hidden" name="source" value="Polyurea Google Ads">
           <input type="text" name="name" placeholder="Full Name *" required autocomplete="name">
@@ -201,7 +246,12 @@
             <option>Other / Not Sure</option>
           </select>
           <textarea name="message" placeholder="Briefly describe your project (optional)"></textarea>
-          <button type="submit" class="btn btn-gold" style="justify-content:center;">Request Free Assessment</button>
+          <button type="submit" class="btn btn-gold lp-cta-btn">Get My Free Assessment &rarr;</button>
+          <div class="lp-micro">
+            <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>100% Confidential</span>
+            <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No Obligation</span>
+            <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Reply in 24h</span>
+          </div>
           <p class="lp-status" aria-live="polite"></p>
         </form>
       </div>
@@ -242,11 +292,11 @@
 <!-- FINAL CTA -->
 <section style="background:var(--navy-mid);padding:4.5rem 0;border-top:1px solid var(--border);">
   <div class="container text-center">
-    <h2 class="section-title">Protect Your Assets <span>Before Corrosion Wins</span></h2>
-    <p class="section-sub">Speak to a coatings specialist today — free assessment, tailored specification, rapid regional deployment.</p>
+    <h2 class="section-title" style="font-size:clamp(2rem,3.8vw,3rem);">Every Day Unprotected<br><span>Costs You Asset Life</span></h2>
+    <p class="section-sub" style="font-size:1.05rem;">Speak to a coatings specialist today — free assessment, tailored specification, rapid regional deployment.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <a href="#quote" class="btn btn-gold">Request Free Assessment</a>
-      <a href="tel:+12262899652" class="btn btn-outline">Call +1 (226) 289-9652</a>
+      <a href="#quote" class="btn btn-gold" style="padding:17px 38px;font-size:0.95rem;box-shadow:0 8px 30px rgba(200,168,75,0.35);">Get My Free Assessment &rarr;</a>
+      <a href="tel:+12262899652" class="btn btn-outline" style="padding:17px 30px;">Call +1 (226) 289-9652</a>
     </div>
   </div>
 </section>
@@ -258,6 +308,12 @@
     <nav class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></nav>
   </div></div></div>
 </footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="lp-mobile-cta">
+  <a href="#quote" class="btn btn-gold">Free Assessment</a>
+  <a href="tel:+12262899652" class="btn btn-outline">Call Now</a>
+</div>
 
 <script src="js/polyurea-anim.js?v=1" defer></script>
 <script>
