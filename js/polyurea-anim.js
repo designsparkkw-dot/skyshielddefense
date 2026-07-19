@@ -281,9 +281,224 @@
     };
   }
 
+  /* ══════════ REFINERY (coastal, left horizon) ══════════ */
+  const refinery = {
+    isRefinery: true,
+    shield: 0, ripple: 0, flash: 0,
+    len: 0, x: 0,
+    init() { this.len = W * 0.26; this.x = W * 0.03; },
+    get cx() { return this.x + this.len * 0.5; },
+    get y() { return HOR - H * 0.055; },
+    update() {
+      if (this.shield > 0) this.shield--;
+      if (this.ripple > 0) this.ripple++;
+      if (this.ripple > 70) this.ripple = 0;
+      if (this.flash > 0) this.flash--;
+    },
+    draw() {
+      const L = this.len, x = this.x, yb = HOR + 2;
+      // Reflection in the water
+      ctx.save();
+      ctx.globalAlpha = 0.13;
+      ctx.translate(0, yb * 2 + 4);
+      ctx.scale(1, -0.7);
+      this.drawStructures(x, yb, L, true);
+      ctx.restore();
+      this.drawStructures(x, yb, L, false);
+
+      // Polyurea barrier dome over the complex
+      const rx = L * 0.60, ry = H * 0.14, cx2 = this.cx;
+      if (this.shield > 0) {
+        const a = Math.min(1, this.shield / 25) * (0.8 + Math.sin(t * 0.25) * 0.15);
+        const fg = ctx.createRadialGradient(cx2, yb, 0, cx2, yb, rx);
+        fg.addColorStop(0, `rgba(${GOLD},${a * 0.10})`);
+        fg.addColorStop(1, `rgba(${GOLD},0)`);
+        ctx.beginPath();
+        ctx.ellipse(cx2, yb, rx, ry, 0, Math.PI, 0);
+        ctx.closePath();
+        ctx.fillStyle = fg;
+        ctx.fill();
+        const g = ctx.createLinearGradient(cx2, yb - ry, cx2, yb);
+        g.addColorStop(0, `rgba(${GOLD},${a})`);
+        g.addColorStop(1, `rgba(${GOLD},${a * 0.35})`);
+        ctx.beginPath();
+        ctx.ellipse(cx2, yb, rx, ry, 0, Math.PI, 0);
+        ctx.strokeStyle = g;
+        ctx.lineWidth = 2.6;
+        ctx.shadowColor = `rgba(${GOLD},0.9)`;
+        ctx.shadowBlur = 20;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = a * 0.5;
+        for (let k = 1; k <= 3; k++) {
+          ctx.beginPath();
+          ctx.ellipse(cx2, yb, rx * (1 - k * 0.11), ry * (1 - k * 0.11), 0, Math.PI, 0);
+          ctx.strokeStyle = `rgba(${GOLD},0.55)`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      }
+      if (this.ripple > 0) {
+        const p = this.ripple / 70;
+        ctx.beginPath();
+        ctx.ellipse(cx2, yb, rx * (1 + p * 0.5), ry * (1 + p * 0.5), 0, Math.PI, 0);
+        ctx.strokeStyle = `rgba(${GOLD},${0.6 * (1 - p)})`;
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+      }
+      if (this.flash > 0) {
+        const a = Math.min(1, this.flash / 40);
+        const fs = Math.max(11, W * 0.0095);
+        ctx.fillStyle = `rgba(${GOLD},${a})`;
+        ctx.font = `700 ${fs}px 'Courier New',monospace`;
+        ctx.textAlign = 'center';
+        ctx.shadowColor = `rgba(${GOLD},0.7)`;
+        ctx.shadowBlur = 10;
+        ctx.fillText('PROTECTED — POLYUREA BARRIER', cx2, yb - ry - 12);
+        ctx.shadowBlur = 0;
+      }
+    },
+    drawStructures(x, yb, L, isRefl) {
+      // Coastline / jetty the refinery sits on
+      ctx.fillStyle = '#0a1626';
+      ctx.beginPath();
+      ctx.moveTo(0, yb);
+      ctx.lineTo(x + L + W * 0.035, yb);
+      ctx.lineTo(x + L + W * 0.02, yb - H * 0.012);
+      ctx.lineTo(0, yb - H * 0.016);
+      ctx.closePath();
+      ctx.fill();
+
+      const base = yb - H * 0.012;
+
+      // Storage tanks (3 cylinders)
+      for (let k = 0; k < 3; k++) {
+        const tw = L * 0.105, th = H * 0.042;
+        const tx = x + L * (0.03 + k * 0.135);
+        const tg = ctx.createLinearGradient(tx, 0, tx + tw, 0);
+        tg.addColorStop(0, '#16293f');
+        tg.addColorStop(0.5, '#1e3a58');
+        tg.addColorStop(1, '#101f33');
+        ctx.fillStyle = tg;
+        ctx.fillRect(tx, base - th, tw, th);
+        ctx.beginPath();
+        ctx.ellipse(tx + tw / 2, base - th, tw / 2, th * 0.22, 0, Math.PI, 0, true);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(140,180,225,0.3)';
+        ctx.lineWidth = 0.7;
+        ctx.strokeRect(tx, base - th, tw, th);
+        // Spiral stair hint
+        ctx.beginPath();
+        ctx.moveTo(tx, base - th * 0.2);
+        ctx.lineTo(tx + tw, base - th * 0.85);
+        ctx.stroke();
+      }
+
+      // Distillation towers (3 columns of varying height)
+      const towers = [[0.50, 0.115], [0.565, 0.145], [0.635, 0.095]];
+      towers.forEach(([fx, fh], idx) => {
+        const twx = x + L * fx, twW = L * 0.028, twH = H * fh;
+        const cg = ctx.createLinearGradient(twx, 0, twx + twW, 0);
+        cg.addColorStop(0, '#1a3049');
+        cg.addColorStop(0.5, '#24425f');
+        cg.addColorStop(1, '#132339');
+        ctx.fillStyle = cg;
+        ctx.fillRect(twx, base - twH, twW, twH);
+        ctx.beginPath();
+        ctx.ellipse(twx + twW / 2, base - twH, twW / 2, twW * 0.4, 0, Math.PI, 0, true);
+        ctx.fill();
+        // Platforms
+        ctx.strokeStyle = 'rgba(140,180,225,0.4)';
+        ctx.lineWidth = 0.8;
+        for (let p2 = 1; p2 <= 3; p2++) {
+          const py = base - twH * (p2 / 3.4);
+          ctx.beginPath();
+          ctx.moveTo(twx - twW * 0.3, py);
+          ctx.lineTo(twx + twW * 1.3, py);
+          ctx.stroke();
+        }
+        // Aviation light
+        if (!isRefl) {
+          const blink = Math.sin(t * 0.12 + idx * 2.2) > 0.3 ? 0.95 : 0.15;
+          ctx.beginPath();
+          ctx.arc(twx + twW / 2, base - twH - 3, 1.8, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,70,70,${blink})`;
+          ctx.shadowColor = 'rgba(255,70,70,0.8)';
+          ctx.shadowBlur = 6;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      });
+
+      // Pipe rack between tanks and towers
+      ctx.strokeStyle = 'rgba(120,160,205,0.35)';
+      ctx.lineWidth = 1;
+      for (let p2 = 0; p2 < 3; p2++) {
+        ctx.beginPath();
+        ctx.moveTo(x + L * 0.06, base - H * 0.012 - p2 * 3);
+        ctx.lineTo(x + L * 0.72, base - H * 0.012 - p2 * 3);
+        ctx.stroke();
+      }
+
+      // Flare stack with burning flame
+      const fsx = x + L * 0.83, fsH = H * 0.125;
+      ctx.strokeStyle = '#1c3450';
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      ctx.moveTo(fsx, base);
+      ctx.lineTo(fsx, base - fsH);
+      ctx.stroke();
+      ctx.lineWidth = 0.8;
+      ctx.strokeStyle = 'rgba(120,160,205,0.3)';
+      [[-1, 0.4], [1, 0.45]].forEach(([d, f]) => {
+        ctx.beginPath();
+        ctx.moveTo(fsx, base - fsH * f);
+        ctx.lineTo(fsx + d * L * 0.03, base);
+        ctx.stroke();
+      });
+      if (!isRefl) {
+        const fl = 0.7 + Math.sin(t * 0.31) * 0.15 + Math.sin(t * 0.83) * 0.15;
+        const fy = base - fsH;
+        const glow = ctx.createRadialGradient(fsx, fy - 6, 0, fsx, fy - 6, 26);
+        glow.addColorStop(0, `rgba(255,180,70,${0.5 * fl})`);
+        glow.addColorStop(1, 'rgba(255,140,40,0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(fsx, fy - 6, 26, 0, Math.PI * 2);
+        ctx.fill();
+        // Flame tongue
+        ctx.beginPath();
+        ctx.moveTo(fsx - 2.5, fy);
+        ctx.quadraticCurveTo(fsx - 3 - fl * 2, fy - 8 * fl, fsx + Math.sin(t * 0.4) * 2, fy - 13 * fl);
+        ctx.quadraticCurveTo(fsx + 3 + fl * 2, fy - 7 * fl, fsx + 2.5, fy);
+        ctx.closePath();
+        const flg = ctx.createLinearGradient(0, fy - 14 * fl, 0, fy);
+        flg.addColorStop(0, 'rgba(255,220,120,0.95)');
+        flg.addColorStop(0.6, 'rgba(255,150,50,0.9)');
+        flg.addColorStop(1, 'rgba(255,90,30,0.8)');
+        ctx.fillStyle = flg;
+        ctx.fill();
+      }
+
+      // Perimeter lights along the jetty
+      if (!isRefl) {
+        for (let k = 0; k < 6; k++) {
+          const lx = x + L * (0.02 + k * 0.19);
+          const pulse = Math.sin(t * 0.03 + k * 1.9) * 0.25 + 0.75;
+          ctx.beginPath();
+          ctx.arc(lx, base + 2, 1.1, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(140,200,255,${0.55 * pulse})`;
+          ctx.fill();
+        }
+      }
+    },
+  };
+
   /* ══════════ DRONES ══════════ */
   function makeDrone() {
-    const target = ships[Math.floor(Math.random() * ships.length)];
+    const pool = ships.concat([refinery]);
+    const target = pool[Math.floor(Math.random() * pool.length)];
     return {
       target,
       x: Math.random() > 0.5 ? -50 : W + 50,
@@ -318,7 +533,7 @@
         const m = this.missile;
         if (!m) return;
         const s = this.target;
-        const ty = s.y + s.len * 0.02;
+        const ty = s.isRefinery ? s.y : s.y + s.len * 0.02;
         const dx = s.cx - m.x, dy = ty - m.y;
         const d = Math.sqrt(dx * dx + dy * dy);
         if (d < s.len * 0.36) {
@@ -592,6 +807,8 @@
     ctx.clearRect(0, 0, W, H);
     drawSky();
     drawSea();
+    refinery.update();
+    refinery.draw();
     ships.forEach(s => { s.update(); s.draw(); });
     for (let i = drones.length - 1; i >= 0; i--) {
       drones[i].update();
@@ -613,6 +830,7 @@
     H = canvas.height = canvas.offsetHeight || 560;
     HOR = H * 0.58;
     buildStars();
+    refinery.init();
     ships.forEach(s => s.init());
   }
 
