@@ -251,6 +251,14 @@ app.post('/api/chat', (req, res) => {
   res.json({ reply });
 });
 
+/* ---------- Clean URL for the ads landing page ---------- */
+app.get('/polyurea', (req, res) => {
+  res.sendFile(path.join(__dirname, 'polyurea.html'));
+});
+app.get('/polyurea.html', (req, res) => {
+  res.redirect(301, '/polyurea');
+});
+
 /* ---------- Static site ---------- */
 app.use(express.static(path.join(__dirname), {
   maxAge: '1y',
