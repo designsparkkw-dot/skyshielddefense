@@ -286,9 +286,9 @@
     isRefinery: true,
     shield: 0, ripple: 0, flash: 0,
     len: 0, x: 0,
-    init() { this.len = W * 0.26; this.x = W * 0.03; },
+    init() { this.len = W * 0.31; this.x = W * 0.38; },
     get cx() { return this.x + this.len * 0.5; },
-    get y() { return HOR - H * 0.055; },
+    get y() { return HOR - H * 0.075; },
     update() {
       if (this.shield > 0) this.shield--;
       if (this.ripple > 0) this.ripple++;
@@ -307,7 +307,7 @@
       this.drawStructures(x, yb, L, false);
 
       // Polyurea barrier dome over the complex
-      const rx = L * 0.60, ry = H * 0.14, cx2 = this.cx;
+      const rx = L * 0.60, ry = H * 0.18, cx2 = this.cx;
       if (this.shield > 0) {
         const a = Math.min(1, this.shield / 25) * (0.8 + Math.sin(t * 0.25) * 0.15);
         const fg = ctx.createRadialGradient(cx2, yb, 0, cx2, yb, rx);
@@ -360,57 +360,80 @@
       }
     },
     drawStructures(x, yb, L, isRefl) {
-      // Coastline / jetty the refinery sits on
-      ctx.fillStyle = '#0a1626';
+      // Warm industrial glow behind the whole complex (makes it pop)
+      if (!isRefl) {
+        const gg = ctx.createRadialGradient(x + L * 0.5, yb - H * 0.04, 0, x + L * 0.5, yb - H * 0.04, L * 0.75);
+        gg.addColorStop(0, 'rgba(255,180,90,0.10)');
+        gg.addColorStop(0.5, 'rgba(120,170,230,0.05)');
+        gg.addColorStop(1, 'rgba(120,170,230,0)');
+        ctx.fillStyle = gg;
+        ctx.fillRect(x - L * 0.3, yb - H * 0.25, L * 1.6, H * 0.27);
+      }
+
+      // Island / jetty the refinery sits on
+      ctx.fillStyle = '#102138';
       ctx.beginPath();
-      ctx.moveTo(0, yb);
+      ctx.moveTo(x - W * 0.03, yb);
       ctx.lineTo(x + L + W * 0.035, yb);
-      ctx.lineTo(x + L + W * 0.02, yb - H * 0.012);
-      ctx.lineTo(0, yb - H * 0.016);
+      ctx.lineTo(x + L + W * 0.02, yb - H * 0.018);
+      ctx.lineTo(x - W * 0.018, yb - H * 0.018);
       ctx.closePath();
       ctx.fill();
+      ctx.strokeStyle = 'rgba(150,195,240,0.35)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
 
-      const base = yb - H * 0.012;
+      const base = yb - H * 0.018;
 
       // Storage tanks (3 cylinders)
       for (let k = 0; k < 3; k++) {
-        const tw = L * 0.105, th = H * 0.042;
+        const tw = L * 0.105, th = H * 0.058;
         const tx = x + L * (0.03 + k * 0.135);
         const tg = ctx.createLinearGradient(tx, 0, tx + tw, 0);
-        tg.addColorStop(0, '#16293f');
-        tg.addColorStop(0.5, '#1e3a58');
-        tg.addColorStop(1, '#101f33');
+        tg.addColorStop(0, '#223d5e');
+        tg.addColorStop(0.5, '#31567f');
+        tg.addColorStop(1, '#1a2f4c');
         ctx.fillStyle = tg;
         ctx.fillRect(tx, base - th, tw, th);
         ctx.beginPath();
         ctx.ellipse(tx + tw / 2, base - th, tw / 2, th * 0.22, 0, Math.PI, 0, true);
         ctx.fill();
-        ctx.strokeStyle = 'rgba(140,180,225,0.3)';
-        ctx.lineWidth = 0.7;
+        ctx.strokeStyle = 'rgba(160,200,245,0.55)';
+        ctx.lineWidth = 1;
         ctx.strokeRect(tx, base - th, tw, th);
         // Spiral stair hint
         ctx.beginPath();
         ctx.moveTo(tx, base - th * 0.2);
         ctx.lineTo(tx + tw, base - th * 0.85);
         ctx.stroke();
+        // Tank floodlight
+        if (!isRefl) {
+          ctx.beginPath();
+          ctx.arc(tx + tw / 2, base - th - 2, 1.3, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(170,215,255,0.85)';
+          ctx.fill();
+        }
       }
 
       // Distillation towers (3 columns of varying height)
-      const towers = [[0.50, 0.115], [0.565, 0.145], [0.635, 0.095]];
+      const towers = [[0.50, 0.165], [0.565, 0.205], [0.635, 0.138]];
       towers.forEach(([fx, fh], idx) => {
-        const twx = x + L * fx, twW = L * 0.028, twH = H * fh;
+        const twx = x + L * fx, twW = L * 0.03, twH = H * fh;
         const cg = ctx.createLinearGradient(twx, 0, twx + twW, 0);
-        cg.addColorStop(0, '#1a3049');
-        cg.addColorStop(0.5, '#24425f');
-        cg.addColorStop(1, '#132339');
+        cg.addColorStop(0, '#2a4869');
+        cg.addColorStop(0.5, '#3a6390');
+        cg.addColorStop(1, '#203756');
         ctx.fillStyle = cg;
         ctx.fillRect(twx, base - twH, twW, twH);
         ctx.beginPath();
         ctx.ellipse(twx + twW / 2, base - twH, twW / 2, twW * 0.4, 0, Math.PI, 0, true);
         ctx.fill();
+        ctx.strokeStyle = 'rgba(170,210,250,0.6)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(twx, base - twH, twW, twH);
         // Platforms
-        ctx.strokeStyle = 'rgba(140,180,225,0.4)';
-        ctx.lineWidth = 0.8;
+        ctx.strokeStyle = 'rgba(170,210,250,0.6)';
+        ctx.lineWidth = 1;
         for (let p2 = 1; p2 <= 3; p2++) {
           const py = base - twH * (p2 / 3.4);
           ctx.beginPath();
@@ -432,19 +455,19 @@
       });
 
       // Pipe rack between tanks and towers
-      ctx.strokeStyle = 'rgba(120,160,205,0.35)';
+      ctx.strokeStyle = 'rgba(150,190,235,0.5)';
       ctx.lineWidth = 1;
       for (let p2 = 0; p2 < 3; p2++) {
         ctx.beginPath();
-        ctx.moveTo(x + L * 0.06, base - H * 0.012 - p2 * 3);
-        ctx.lineTo(x + L * 0.72, base - H * 0.012 - p2 * 3);
+        ctx.moveTo(x + L * 0.06, base - H * 0.012 - p2 * 3.5);
+        ctx.lineTo(x + L * 0.72, base - H * 0.012 - p2 * 3.5);
         ctx.stroke();
       }
 
       // Flare stack with burning flame
-      const fsx = x + L * 0.83, fsH = H * 0.125;
-      ctx.strokeStyle = '#1c3450';
-      ctx.lineWidth = 2.4;
+      const fsx = x + L * 0.83, fsH = H * 0.175;
+      ctx.strokeStyle = '#2c4d72';
+      ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.moveTo(fsx, base);
       ctx.lineTo(fsx, base - fsH);
@@ -458,38 +481,52 @@
         ctx.stroke();
       });
       if (!isRefl) {
-        const fl = 0.7 + Math.sin(t * 0.31) * 0.15 + Math.sin(t * 0.83) * 0.15;
+        const fl = 0.75 + Math.sin(t * 0.31) * 0.15 + Math.sin(t * 0.83) * 0.15;
         const fy = base - fsH;
-        const glow = ctx.createRadialGradient(fsx, fy - 6, 0, fsx, fy - 6, 26);
-        glow.addColorStop(0, `rgba(255,180,70,${0.5 * fl})`);
+        const glow = ctx.createRadialGradient(fsx, fy - 10, 0, fsx, fy - 10, 48);
+        glow.addColorStop(0, `rgba(255,190,80,${0.65 * fl})`);
+        glow.addColorStop(0.5, `rgba(255,150,50,${0.25 * fl})`);
         glow.addColorStop(1, 'rgba(255,140,40,0)');
         ctx.fillStyle = glow;
         ctx.beginPath();
-        ctx.arc(fsx, fy - 6, 26, 0, Math.PI * 2);
+        ctx.arc(fsx, fy - 10, 48, 0, Math.PI * 2);
         ctx.fill();
-        // Flame tongue
+        // Flame tongue (large, flickering)
         ctx.beginPath();
-        ctx.moveTo(fsx - 2.5, fy);
-        ctx.quadraticCurveTo(fsx - 3 - fl * 2, fy - 8 * fl, fsx + Math.sin(t * 0.4) * 2, fy - 13 * fl);
-        ctx.quadraticCurveTo(fsx + 3 + fl * 2, fy - 7 * fl, fsx + 2.5, fy);
+        ctx.moveTo(fsx - 4, fy);
+        ctx.quadraticCurveTo(fsx - 5 - fl * 3.5, fy - 14 * fl, fsx + Math.sin(t * 0.4) * 3.5, fy - 24 * fl);
+        ctx.quadraticCurveTo(fsx + 5 + fl * 3.5, fy - 12 * fl, fsx + 4, fy);
         ctx.closePath();
-        const flg = ctx.createLinearGradient(0, fy - 14 * fl, 0, fy);
-        flg.addColorStop(0, 'rgba(255,220,120,0.95)');
-        flg.addColorStop(0.6, 'rgba(255,150,50,0.9)');
-        flg.addColorStop(1, 'rgba(255,90,30,0.8)');
+        const flg = ctx.createLinearGradient(0, fy - 25 * fl, 0, fy);
+        flg.addColorStop(0, 'rgba(255,235,150,1)');
+        flg.addColorStop(0.55, 'rgba(255,165,55,0.95)');
+        flg.addColorStop(1, 'rgba(255,95,30,0.85)');
         ctx.fillStyle = flg;
+        ctx.shadowColor = 'rgba(255,170,60,0.9)';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        // Inner white-hot core
+        ctx.beginPath();
+        ctx.moveTo(fsx - 1.8, fy);
+        ctx.quadraticCurveTo(fsx + Math.sin(t * 0.5) * 1.5, fy - 11 * fl, fsx + 1.8, fy);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(255,250,220,0.9)';
         ctx.fill();
       }
 
       // Perimeter lights along the jetty
       if (!isRefl) {
-        for (let k = 0; k < 6; k++) {
-          const lx = x + L * (0.02 + k * 0.19);
+        for (let k = 0; k < 8; k++) {
+          const lx = x + L * (0.02 + k * 0.14);
           const pulse = Math.sin(t * 0.03 + k * 1.9) * 0.25 + 0.75;
           ctx.beginPath();
-          ctx.arc(lx, base + 2, 1.1, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(140,200,255,${0.55 * pulse})`;
+          ctx.arc(lx, base + 3, 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(160,210,255,${0.8 * pulse})`;
+          ctx.shadowColor = 'rgba(140,200,255,0.7)';
+          ctx.shadowBlur = 5;
           ctx.fill();
+          ctx.shadowBlur = 0;
         }
       }
     },
