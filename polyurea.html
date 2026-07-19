@@ -38,6 +38,9 @@
   <link rel="stylesheet" href="css/style.css?v=23">
   <style>
     body,html{background:#060e1a;}
+    /* Full-width layout for this landing page */
+    .container{max-width:none;padding:0 4vw;}
+    .lp-topbar-inner{max-width:none !important;padding:0.7rem 4vw !important;}
     .lp-topbar{
       position:sticky;top:0;z-index:100;
       background:rgba(6,14,26,0.95);backdrop-filter:blur(8px);
@@ -66,7 +69,7 @@
       #polyurea-canvas,.lp-hero-overlay{display:none;}
     }
     .lp-hero-grid{
-      display:grid;grid-template-columns:1.1fr 0.9fr;gap:3.5rem;align-items:start;
+      display:grid;grid-template-columns:1.3fr minmax(380px,540px);gap:4rem;align-items:start;
     }
     .lp-h1{
       font-family:'Rajdhani','IBM Plex Sans',sans-serif;
