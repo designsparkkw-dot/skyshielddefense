@@ -236,6 +236,7 @@
         <p>Tell us about your asset — a Sky Shield Protect specialist will come back with a tailored recommendation within 24 hours.</p>
         <form id="lpForm" class="lp-form" novalidate>
           <input type="hidden" name="source" value="Polyurea Google Ads">
+          <input type="hidden" name="tracking" value="">
           <input type="text" name="name" placeholder="Full Name *" required autocomplete="name">
           <input type="email" name="email" placeholder="Work Email *" required autocomplete="email">
           <input type="tel" name="phone" placeholder="Phone Number *" required autocomplete="tel">
@@ -327,6 +328,17 @@
   if (!form) return;
   var status = form.querySelector('.lp-status');
   var btn = form.querySelector('button[type="submit"]');
+
+  // Capture ad-click attribution (ValueTrack/UTM params) into the lead
+  try {
+    var p = new URLSearchParams(location.search);
+    var parts = [];
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','matchtype','device','gclid'].forEach(function (k) {
+      var v = p.get(k);
+      if (v) parts.push(k + '=' + v);
+    });
+    if (parts.length) form.querySelector('[name="tracking"]').value = parts.join(' | ').slice(0, 500);
+  } catch (e) {}
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();

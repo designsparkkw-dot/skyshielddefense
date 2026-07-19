@@ -135,6 +135,7 @@ app.post('/api/lead', upload.none(), async (req, res) => {
   const phone    = f('phone');
   const interest = f('interest');
   const source   = f('source');
+  const tracking = f('tracking');
   const message  = (req.body && req.body.message ? String(req.body.message) : '').trim();
 
   const errors = [];
@@ -158,6 +159,7 @@ app.post('/api/lead', upload.none(), async (req, res) => {
     `Company / Organisation:  ${company || '—'}`,
     `Phone:                   ${phone   || '—'}`,
     interest ? `Interested In:           ${interest}` : null,
+    tracking ? `Ad Click Data:           ${tracking}` : null,
     message  ? `\nProject Details:\n${message}` : null,
   ].filter(l => l !== null).join('\n');
 
