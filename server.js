@@ -254,7 +254,7 @@ app.post('/api/chat', (req, res) => {
 });
 
 /* ---------- Clean URLs — serve all pages without .html extension ---------- */
-const cleanPages = ['protect','detect','secure','about','industries','blog','contact','privacy','terms','polyurea'];
+const cleanPages = ['protect','detect','secure','about','industries','blog','contact','privacy','terms','polyurea','drone-interceptors'];
 cleanPages.forEach(page => {
   app.get(`/${page}`, (req, res) => res.sendFile(path.join(__dirname, `${page}.html`)));
   app.get(`/${page}.html`, (req, res) => res.redirect(301, `/${page}`));
