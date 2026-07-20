@@ -473,6 +473,69 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
   });
 })();
 
+/* ---------- FAQ smooth accordion ---------- */
+(function initFAQ() {
+  document.querySelectorAll('.faq-item').forEach(function(details) {
+    const summary = details.querySelector('.faq-q');
+    const body    = details.querySelector('.faq-a');
+    if (!summary || !body) return;
+
+    summary.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      if (details.hasAttribute('open')) {
+        // --- CLOSE ---
+        const cs = getComputedStyle(body);
+        const pb = parseFloat(cs.paddingBottom);
+        const contentH = body.scrollHeight - pb;
+
+        body.style.overflow     = 'hidden';
+        body.style.height       = contentH + 'px';
+        body.style.paddingBottom = pb + 'px';
+        void body.offsetHeight; // force reflow
+
+        body.style.transition   = 'height 0.32s cubic-bezier(0.4,0,0.2,1), padding-bottom 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease';
+        body.style.height       = '0';
+        body.style.paddingBottom = '0';
+        body.style.opacity      = '0';
+
+        const onClose = function(ev) {
+          if (ev.propertyName !== 'height') return;
+          body.removeEventListener('transitionend', onClose);
+          details.removeAttribute('open');
+          body.style.cssText = '';
+        };
+        body.addEventListener('transitionend', onClose);
+
+      } else {
+        // --- OPEN ---
+        details.setAttribute('open', '');
+        const cs = getComputedStyle(body);
+        const pb = parseFloat(cs.paddingBottom);
+        const contentH = body.scrollHeight - pb;
+
+        body.style.overflow      = 'hidden';
+        body.style.height        = '0';
+        body.style.paddingBottom = '0';
+        body.style.opacity       = '0';
+        void body.offsetHeight; // force reflow
+
+        body.style.transition    = 'height 0.32s cubic-bezier(0.4,0,0.2,1), padding-bottom 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease';
+        body.style.height        = contentH + 'px';
+        body.style.paddingBottom = pb + 'px';
+        body.style.opacity       = '1';
+
+        const onOpen = function(ev) {
+          if (ev.propertyName !== 'height') return;
+          body.removeEventListener('transitionend', onOpen);
+          body.style.cssText = ''; // hand back to CSS
+        };
+        body.addEventListener('transitionend', onOpen);
+      }
+    });
+  });
+})();
+
 /* ---------- Smooth scroll ---------- */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
