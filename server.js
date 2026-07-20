@@ -202,7 +202,7 @@ const FAQ_RULES = [
   },
   {
     keywords: ['contact', 'phone', 'email', 'reach', 'call', 'talk to someone'],
-    reply: "You can reach us at info@skyshielddefense.com or +1 (226) 289-9652, or fill out the contact form at /contact.html for a free assessment.",
+    reply: "You can reach us at info@skyshielddefense.com or +1 (226) 289-9652, or fill out the contact form at /contact for a free assessment.",
   },
   {
     keywords: ['location', 'where', 'office', 'hq', 'headquarters', 'address', 'based'],
@@ -218,7 +218,7 @@ const FAQ_RULES = [
   },
   {
     keywords: ['thank', 'thanks', 'appreciate'],
-    reply: "You're welcome! Let me know if there's anything else you'd like to know, or visit /contact.html when you're ready for a free assessment.",
+    reply: "You're welcome! Let me know if there's anything else you'd like to know, or visit /contact when you're ready for a free assessment.",
   },
   {
     keywords: ['bye', 'goodbye', 'see you'],
@@ -226,7 +226,7 @@ const FAQ_RULES = [
   },
 ];
 
-const FALLBACK_REPLY = "I'm not sure I can answer that directly — I can help with questions about our Protect, Detect & Intercept, and Secure services, our sectors, or how to get in touch. For anything else, please use our contact form at /contact.html and a specialist will follow up.";
+const FALLBACK_REPLY = "I'm not sure I can answer that directly — I can help with questions about our Protect, Detect & Intercept, and Secure services, our sectors, or how to get in touch. For anything else, please use our contact form at /contact and a specialist will follow up.";
 
 function matchFaq(text) {
   const lower = text.toLowerCase();
@@ -253,12 +253,11 @@ app.post('/api/chat', (req, res) => {
   res.json({ reply });
 });
 
-/* ---------- Clean URL for the ads landing page ---------- */
-app.get('/polyurea', (req, res) => {
-  res.sendFile(path.join(__dirname, 'polyurea.html'));
-});
-app.get('/polyurea.html', (req, res) => {
-  res.redirect(301, '/polyurea');
+/* ---------- Clean URLs — serve all pages without .html extension ---------- */
+const cleanPages = ['protect','detect','secure','about','industries','blog','contact','privacy','terms','polyurea'];
+cleanPages.forEach(page => {
+  app.get(`/${page}`, (req, res) => res.sendFile(path.join(__dirname, `${page}.html`)));
+  app.get(`/${page}.html`, (req, res) => res.redirect(301, `/${page}`));
 });
 
 /* ---------- Static site ---------- */

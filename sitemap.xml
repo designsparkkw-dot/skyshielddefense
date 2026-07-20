@@ -4,70 +4,105 @@
 
   <url>
     <loc>https://www.skyshielddefense.com/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/protect.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/detect</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/detect.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/protect</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/secure.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/secure</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/industries.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/polyurea</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skyshielddefense.com/industries</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/about.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/about</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/contact.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/contact</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/blog.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <loc>https://www.skyshielddefense.com/blog</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skyshielddefense.com/blog/counter-drone-systems-airports</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/privacy.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/blog/drone-detection-interception-guide</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skyshielddefense.com/blog/protect-critical-infrastructure-drone-threats</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skyshielddefense.com/blog/polyurea-coatings-defense-applications</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skyshielddefense.com/privacy</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://www.skyshielddefense.com/terms.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://www.skyshielddefense.com/terms</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
