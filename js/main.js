@@ -305,6 +305,9 @@ mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () =>
           btn.style.borderColor = 'var(--green)';
           btn.style.color = 'var(--green)';
           form.reset();
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', { send_to: 'AW-18303314995/9QTzCNqI_dIcELPY2ZdE' });
+          }
         } else {
           btn.innerHTML = '<span>✕ ' + (data.message || 'SOMETHING WENT WRONG — PLEASE EMAIL US DIRECTLY').toUpperCase() + '</span>';
           btn.style.background = 'rgba(255,80,80,0.15)';
