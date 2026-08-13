@@ -58,6 +58,8 @@ async function sendMail({ subject, body, replyName, replyEmail }) {
     headers: {
       'X-Mailer': 'Sky Shield Defense Website',
     },
+    disableFileAccess: true,
+    disableUrlAccess: true,
   });
 }
 
